@@ -5,12 +5,12 @@ FROM ruby:2.6.5
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 
 # Set workspace.
-RUN mkdir /www
-WORKDIR /www
-COPY Gemfile /www/Gemfile
-COPY Gemfile.lock /www/Gemfile.lock
+RUN mkdir -p /www/hope
+WORKDIR /www/hope
+COPY Gemfile /www/hope/Gemfile
+COPY Gemfile.lock /www/hope/Gemfile.lock
 RUN bundle install
-COPY . /www
+COPY . /www/hope
 
 # Add a script to be executed every time the container starts.
 COPY entrypoint.sh /usr/bin/
