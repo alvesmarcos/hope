@@ -25,7 +25,6 @@ development:
   <<: *default
   database: hope_development
   host: <%= ENV['DB_HOST'] %>
-  port: <%= ENV['DB_PORT'] %>
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
 
