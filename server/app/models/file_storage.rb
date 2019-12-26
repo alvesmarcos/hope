@@ -1,2 +1,0 @@
-class FileStorage < ApplicationRecord
-end
