@@ -5,8 +5,6 @@ class CreateProfessions < ActiveRecord::Migration[6.0]
       t.string :code, null: false
  
       t.timestamps
-
-      t.index :code, unique: true
     end
   end
 end

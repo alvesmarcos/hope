@@ -1,4 +1,4 @@
-class CreateExpertOptions < ActiveRecord::Migration[6.0]
+class CreateExpertOpnions < ActiveRecord::Migration[6.0]
   def change
     create_table :expert_options do |t|
       t.string :text, null: false

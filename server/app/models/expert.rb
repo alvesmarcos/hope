@@ -4,6 +4,6 @@ class Expert < ApplicationRecord
   belongs_to :status
 
   # validations
-  validations_presence_of :name, :email, :profession_id
-  validations_uniqueness_of :email
+  validates_presence_of :name, :email, :profession_id
+  validates_uniqueness_of :email
 end

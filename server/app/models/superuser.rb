@@ -3,6 +3,6 @@ class Superuser < ApplicationRecord
    has_secure_password
    
    # validations
-   validations_presence_of :name, :email
-   validations_uniqueness_of :email
+   validates_presence_of :name, :email
+   validates_uniqueness_of :email
 end
