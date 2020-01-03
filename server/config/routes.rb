@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace 'api' do
     namespace 'v1' do
-      resources :profiles
-      resources :roles
-      resources :users
+      post 'auth/superuser', to: 'sessions#auth_superuser'
+      post 'superuser', to: 'superusers#create'
     end
   end
 end
