@@ -26,6 +26,10 @@ class Message
   def self.account_not_created
     'Account could not be created'
   end
+
+  def self.forbidden
+    'Sorry, you do not have permission to access the route you requested.'
+  end
   
   def self.expired_token
     'Sorry, your token has expired. Please sign in to continue.'

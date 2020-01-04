@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # encrypt password
+  has_secure_password
+   
   # associations
   belongs_to :level_addiction
   belongs_to :level_family_relationship

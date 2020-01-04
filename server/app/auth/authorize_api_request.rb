@@ -3,21 +3,26 @@ class AuthorizeApiRequest
     @headers = headers
   end
 
-  def call
-    {
-      superuser: superuser
-    }
+  def authorize(*models)
+    group(*models)
   end
 
   private
 
   attr_reader :headers
 
-  def superuser
-    @superuser ||= Superuser.find(decode_auth_token[:superuser_id]) if decoded_auth_token
+  def group(*models)
+    email = decoded_auth_token[:email] if decoded_auth_token
+
+    models.each do |model|
+      member = model.find_by(email: email)
+      next if member.nil?
+      return member
+    end
+    raise ExceptionHandler::Forbidden, Message.forbidden
   end
 
-  def decode_auth_token
+  def decoded_auth_token
     @decoded_auth_token ||= JsonWebToken.decode(http_auth_header)
   end
 

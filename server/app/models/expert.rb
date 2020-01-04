@@ -1,4 +1,7 @@
 class Expert < ApplicationRecord
+  # encrypt password
+  has_secure_password
+   
   # associations
   belongs_to :profession
   belongs_to :status

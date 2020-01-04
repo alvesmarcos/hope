@@ -30,5 +30,3 @@ MediaCategory.create([
   { name: 'thumbnail', description: 'Describes an image thumbnail for articles, documentaries, testimonies etc.', slug: 'thumbnail' },
   { name: 'documents', description: 'Describes documents that proves the profession of an expert', slug: 'documents' }
 ])
-
-Superuser.create(name: 'LAViD/Fuze.cc', password_digest: '1245678', email: 'fuze@lavid.com.br')
