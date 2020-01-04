@@ -1,28 +1,13 @@
-Profession.create([
-  { name: 'Pastor', code: 'Indisponível' },
-  { name: 'Especialista', code: 'Indisponível' },
-  { name: 'Especialista', code: 'Indisponível' },
-  { name: 'Psicólogo', code: '251510'},
-  { name: 'Psiquiatra', code: '225133'}
+Profile.create([
+  { name: 'Dependente', slug: 'dependente', description: 'Sofro com dependência química e busco ajuda' },
+  { name: 'Co-depente', slug: 'co-depente', description: 'Quero ajudar um familiar ou amigo dependente' },
+  { name: 'Ex-dependente', slug: 'ex-dependente', description: 'Saí do mundo das drogas e busco ajudar outras pessoas' },
+  { name: 'Especialista', slug: 'especialista', description: 'Sou um especialista e desejo ajudar mais pessoas' }
 ])
 
-Status.create([
-  { name: 'Na Fila', description: 'Aguardanco aprovação do administrador', slug: 'queue' },
-  { name: 'Aprovado', description: 'Solicitação aprovada pelo administrador', slug: 'approved' },
-  { name: 'Reprovado', description: 'Solicitação reprovada pelo administrador', slug: 'repproved' }
-])
-
-LevelAddiction.create([
-  { name: 'Muito depedente', description: 'Não tenho mais controle algum sobre meu consumo de drogas.', slug: 'high' },
-  { name: 'Depedente', description: 'Sinto que ainda tenho algum controle, mas não sei até quando conseguirei.', slug: 'medium' },
-  { name: 'Pouco depedente', description: 'Aguardanco aprovação do administrador', slug: 'low' }
-])
-
-LevelFamilyRelationship.create([
-  { name: 'Péssima', description: 'Tenho uma péssima relação com minha família.', slug: 'bad' },
-  { name: 'Ruim', description: 'Tenho uma mediana relação com minha família.', slug: 'mean' },
-  { name: 'Boa', description: 'Tenho uma boa relação com minha família.', slug: 'good' },
-  { name: 'Ótima', description: 'Tenho uma ótima relação com minha família.', slug: 'great' }
+Role.create([
+  { name: 'Administrador', slug: 'superuser', description: 'Controla todas as ações e conteúdos do sistema' },
+  { name: 'Usuário', slug: 'user', description: 'Tem acesso a todos os conteúdos do sistema' },
 ])
 
 MediaCategory.create([

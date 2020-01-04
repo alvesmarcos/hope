@@ -3,23 +3,26 @@ class AuthorizeApiRequest
     @headers = headers
   end
 
-  def authorize(*models)
-    group(*models)
+  def authorize(*roles)
+    user(*roles)
   end
 
   private
 
   attr_reader :headers
 
-  def group(*models)
-    email = decoded_auth_token[:email] if decoded_auth_token
+  def user(*roles)
+    user = User.find(decoded_auth_token[:user_id]) if decoded_auth_token
 
-    models.each do |model|
-      member = model.find_by(email: email)
-      next if member.nil?
-      return member
+    roles.each do |role|
+      record = Role.find_by!(slug: role)
+      return user if record.id == user.role_id
     end
+    
     raise ExceptionHandler::Forbidden, Message.forbidden
+
+    rescue ActiveRecord::RecordNotFound => e
+      raise ExceptionHandler::InvalidToken, "#{Message.invalid_token} #{e.message}"
   end
 
   def decoded_auth_token

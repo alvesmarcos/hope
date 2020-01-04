@@ -1,6 +1,6 @@
-class ExpertOpnion < ApplicationRecord
+class ExpertOpinion < ApplicationRecord
   # associations
-  belongs_to :expert
+  belongs_to :user
 
   # validations
   validates_presence_of :text
