@@ -1,21 +1,16 @@
 class UserMailer < ApplicationMailer
-  # send a message to recovery password
-  def recovery(email, token)
-    send(email, 
-    '[Hope] Recuperação de senha', 
-    "O token para recuperação de senha é #{token}. Você tem até duas horas para utiliza-lo antes de ser expirado.
-    Caso você não tenha solicitado a recuperação de senha, por favor, desconsidere essa mensagem.")
+  default from: ENV['MAILGUN_EMAIL_HOST']
+  layout 'mailer'
+
+  # send a message with token to recovery password
+  def recovery_email(user)
+    @user = user
+    mail(to: @user.email, subject: '[Hope] Recuperação de senha')
   end
-  
-  ##
-  ## TODO: write here others template of email (e.g Welcome, Notification etc.)
-  ## 
 
-  private
-
-  def send(email, subject, message)
-    mg_client = Mailgun::Client.new(ENV['MAILGUN_API_KEY'])
-    message_params = { from: ENV['MAILGUN_EMAIL_HOST'], to: email, subject: subject, text: message }
-    mg_client.send_message(ENV['MAILGUN_DOMAIN'], message_params)
+  # send automatically after user created an account
+  def welcome_email(user)
+    @user = user
+    mail(to: @user.email, subject: 'Bem Vindo a Plataforma Hope')
   end
 end

@@ -27,6 +27,8 @@ module Api
         if user.save
           auth_token = AuthenticateUser.new(user.email, user.password)
             .authenticate
+          # send email using welcome template
+          UserMailer.welcome_email(user).deliver_now
           response = { message: Message.account_created, token: auth_token }
           json_response(response, :created)
         else

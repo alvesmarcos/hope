@@ -8,10 +8,8 @@ module Api
         user = User.find_by!(email: email)
         user.generate_password_token!
         # send email using recovery template
-        UserMailer.recovery(user.email, user.reset_password_token)
-        json_response({ 
-          message: 'We sent an email with a token that should be used in order to reset your password' 
-        })
+        UserMailer.recovery_email(user).deliver_now
+        json_response({ message: 'Check your ' })
       end
 
       # allowed => public
@@ -22,7 +20,7 @@ module Api
 
         user = User.find_by!(email: email)
 
-        if user.reset_password_token == user_params[:token] and user.password_token_valid?
+        if user.reset_password_token == token and user.password_token_valid?
           user.password = password
           user.password_confirmation = password_confirmation
           user.save!
@@ -30,12 +28,6 @@ module Api
         else
           json_response({ message: 'Token not valid or expired. Try generating a new token' }, :not_found)
         end
-      end
-
-      private
-
-      def user_params
-        params.permit(:token, :email, :password, :password_confirmation)
       end
     end
   end
