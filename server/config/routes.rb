@@ -13,15 +13,15 @@ Rails.application.routes.draw do
       # from users controller
       # GET
       get 'users/list.json', to: 'users#index'
-      get 'users/show.json/:id', to: 'users#show'
+      get 'users/show/:id.json', to: 'users#show'
       get 'users/show.json', to: 'users#self_show'
       # POST
       post 'users/create.json', to: 'users#create'
       # PUT
-      put 'users/update.json/:id', to: 'users#update'
+      put 'users/update/:id.json', to: 'users#update'
       put 'users/update.json', to: 'users#self_update'
       # DELETE
-      delete 'users/destroy.json/:id', to: 'users#destroy'
+      delete 'users/destroy/:id.json', to: 'users#destroy'
       delete 'users/destroy.json', to: 'users#self_destroy'
     end
   end
