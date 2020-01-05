@@ -13,4 +13,24 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :name, length: { minimum: 2 }
   validates :username, length: { minimum: 2 }
+
+  # methods
+
+  # create token for password and store in table users
+  def generate_password_token!
+    self.reset_password_token = generate_token
+    self.reset_password_sent_at = Time.now.utc
+    save!
+   end
+   
+  # after one two you have to request a new token
+   def password_token_valid?
+    (self.reset_password_sent_at + 2.hours) > Time.now.utc
+   end
+   
+   private
+   
+   def generate_token
+    SecureRandom.hex(10)
+   end
 end

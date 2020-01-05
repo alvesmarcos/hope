@@ -8,6 +8,7 @@ module ExceptionHandler
 
   included do
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_request
+    rescue_from ActionController::ParameterMissing, with: :_bad_request
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_request
     rescue_from ExceptionHandler::AuthenticationError, with: :unauthorized_request
     rescue_from ExceptionHandler::Forbidden, with: :forbidden_request
@@ -31,5 +32,9 @@ module ExceptionHandler
 
   def unauthorized_request(e)
     json_response({ message: e.message }, :unauthorized)
+  end
+
+  def _bad_request(e)
+    json_response({ message: e.message }, :bad_request)
   end
 end
