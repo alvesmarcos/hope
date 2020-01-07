@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
+  # storage Amazon S3
+  mount_uploader :thumbnail, ThumbnailUploader
+
   # associations
-  belongs_to :media
   belongs_to :user, foreign_key: 'created_by'
   
   # validations

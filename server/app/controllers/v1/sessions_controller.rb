@@ -3,7 +3,7 @@ module V1
     # allowed => public
     # sessions/:id
     def create
-      token = AuthenticateUser.new(auth_params[:email], auth_params[:password])
+      token = AuthenticateUserService.new(auth_params[:email], auth_params[:password])
       .call
       json_response(token: token)
     end

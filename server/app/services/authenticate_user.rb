@@ -1,4 +1,4 @@
-class AuthenticateUser
+class AuthenticateUserService
   def initialize(email, password)
     @email = email
     @password = password 

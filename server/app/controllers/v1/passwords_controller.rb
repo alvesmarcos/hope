@@ -8,7 +8,7 @@ module V1
       user.generate_password_token!
       # send email using recovery template
       UserMailer.recovery_email(user).deliver_now
-      json_response({ message: 'Check your ' })
+      json_response({ message: 'We sent an email for recovery password. Please check your email inbox.' })
     end
     
     # allowed => public

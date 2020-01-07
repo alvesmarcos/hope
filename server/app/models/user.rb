@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # encrypt password
   has_secure_password
+
+  # storage Amazon S3
+  mount_uploader :avatar, AvatarUploader
    
   # associations
   belongs_to :profile
@@ -14,7 +17,7 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2 }
   validates :username, length: { minimum: 2 }
 
-  # methods
+  # helpers methods
 
   # create token for password and store in table users
   def generate_password_token!
