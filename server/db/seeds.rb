@@ -9,9 +9,3 @@ Role.create([
   { name: 'Administrador', slug: 'superuser', description: 'Controla todas as ações e conteúdos do sistema' },
   { name: 'Usuário', slug: 'user', description: 'Tem acesso a todos os conteúdos do sistema' },
 ])
-
-MediaCategory.create([
-  { name: 'avatar', description: 'Describes an user profile photo', slug: 'avatar' },
-  { name: 'thumbnail', description: 'Describes an image thumbnail for articles, documentaries, testimonies etc.', slug: 'thumbnail' },
-  { name: 'documents', description: 'Describes documents that proves the profession of an expert', slug: 'documents' }
-])
