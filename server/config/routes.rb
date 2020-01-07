@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
   namespace 'v1' do
-    # from sessions controller
+    # SessionsController
     # POST
     post 'sessions.json', to: 'sessions#create'
     
-    # from passwords controller
+    # PasswordController
     # POST
     post 'forgot_password.json', to: 'passwords#forgot'
     post 'reset_password.json', to: 'passwords#reset'
+
+    # AvatarsController
+    post 'avatars/create.json', to: 'avatars#create'
     
-    # from users controller
+    # UsersController
     # GET
     get 'users/list.json', to: 'users#index'
     get 'users/show/:id.json', to: 'users#show'
