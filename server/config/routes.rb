@@ -67,7 +67,7 @@ Rails.application.routes.draw do
     put 'tips/update/:id.json', to: 'tips#update'
     # DELETE
     delete 'tips/destroy/:id.json', to: 'tips#destroy'
-
+    
     # QuotesController
     # GET
     get 'quotes/list.json', to: 'quotes#index'
@@ -78,7 +78,7 @@ Rails.application.routes.draw do
     put 'quotes/update/:id.json', to: 'quotes#update'
     # DELETE
     delete 'quotes/destroy/:id.json', to: 'quotes#destroy'
-
+    
     # FaqsController
     # GET
     get 'faqs/list.json', to: 'faqs#index'
@@ -89,7 +89,7 @@ Rails.application.routes.draw do
     put 'faqs/update/:id.json', to: 'faqs#update'
     # DELETE
     delete 'faqs/destroy/:id.json', to: 'faqs#destroy'
-
+    
     # ExpertOpinionsController
     # GET
     get 'expert_opinions/list.json', to: 'expert_opinions#index'
@@ -100,5 +100,22 @@ Rails.application.routes.draw do
     put 'expert_opinions/update/:id.json', to: 'expert_opinions#update'
     # DELETE
     delete 'expert_opinions/destroy/:id.json', to: 'expert_opinions#destroy'
+    
+    # DocumentariesController
+    # GET
+    get 'documentaries/list.json', to: 'documentaries#index'
+    get 'documentaries/show/:id.json', to: 'documentaries#show'
+    # POST
+    post 'documentaries/create.json', to: 'documentaries#create'
+    # PUT
+    put 'documentaries/update/:id.json', to: 'documentaries#update'
+    # DELETE
+    delete 'documentaries/destroy/:id.json', to: 'documentaries#destroy'
+    
+    # ThumbnailDocumentariesController
+    # PUT
+    put 'thumbnail_documentaries/update/:id.json', to: 'thumbnail_documentaries#update'
+    # DELETE
+    delete 'thumbnail_documentaries/destroy/:id.json', to: 'thumbnail_documentaries#destroy'
   end
 end
