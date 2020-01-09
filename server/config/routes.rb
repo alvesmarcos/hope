@@ -78,5 +78,16 @@ Rails.application.routes.draw do
     put 'quotes/update/:id.json', to: 'quotes#update'
     # DELETE
     delete 'quotes/destroy/:id.json', to: 'quotes#destroy'
+
+    # FaqController
+    # GET
+    get 'faqs/list.json', to: 'faqs#index'
+    get 'faqs/show/:id.json', to: 'faqs#show'
+    # POST
+    post 'faqs/create.json', to: 'faqs#create'
+    # PUT
+    put 'faqs/update/:id.json', to: 'faqs#update'
+    # DELETE
+    delete 'faqs/destroy/:id.json', to: 'faqs#destroy'
   end
 end
