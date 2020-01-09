@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
   private
 
   def authorize_request(*roles)
-    @current_user = AuthorizeApiRequestService.new(request.headers)
+    @current_user = AuthorizeApiRequest.new(request.headers)
       .authorize(*roles)
   end
 end

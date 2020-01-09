@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   mount_uploader :thumbnail, ThumbnailUploader
 
   # associations
-  belongs_to :user, foreign_key: 'created_by'
+  belongs_to :created_by, class_name: 'User', foreign_key: 'created_by_id'
   
   # validations
   validates_presence_of :title, :url
