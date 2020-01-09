@@ -45,5 +45,16 @@ Rails.application.routes.draw do
     put 'thumbnail_articles/update/:id.json', to: 'thumbnail_articles#update'
     # DELETE
     delete 'thumbnail_articles/destroy/:id.json', to: 'thumbnail_articles#destroy'
+
+    # FactsController
+    # GET
+    get 'facts/list.json', to: 'facts#index'
+    get 'facts/show/:id.json', to: 'facts#show'
+    # POST
+    post 'facts/create.json', to: 'facts#create'
+    # PUT
+    put 'facts/update/:id.json', to: 'facts#update'
+    # DELETE
+    delete 'facts/destroy/:id.json', to: 'facts#destroy'
   end
 end
