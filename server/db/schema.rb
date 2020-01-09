@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_01_02_013443) do
   create_table "testimonies", force: :cascade do |t|
     t.string "title", null: false
     t.string "text", null: false
+    t.string "url", null: false
     t.string "thumbnail"
     t.bigint "created_by_id", null: false
     t.datetime "created_at", precision: 6, null: false

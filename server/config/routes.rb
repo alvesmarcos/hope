@@ -117,5 +117,22 @@ Rails.application.routes.draw do
     put 'thumbnail_documentaries/update/:id.json', to: 'thumbnail_documentaries#update'
     # DELETE
     delete 'thumbnail_documentaries/destroy/:id.json', to: 'thumbnail_documentaries#destroy'
+
+    # TestimoniesController
+    # GET
+    get 'testimonies/list.json', to: 'testimonies#index'
+    get 'testimonies/show/:id.json', to: 'testimonies#show'
+    # POST
+    post 'testimonies/create.json', to: 'testimonies#create'
+    # PUT
+    put 'testimonies/update/:id.json', to: 'testimonies#update'
+    # DELETE
+    delete 'testimonies/destroy/:id.json', to: 'testimonies#destroy'
+    
+    # ThumbnailTestimoniesController
+    # PUT
+    put 'thumbnail_testimonies/update/:id.json', to: 'thumbnail_testimonies#update'
+    # DELETE
+    delete 'thumbnail_testimonies/destroy/:id.json', to: 'thumbnail_testimonies#destroy'
   end
 end
