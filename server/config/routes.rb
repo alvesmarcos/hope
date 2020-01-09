@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace 'v1' do
+  api_version(:module => "V1", :path => {:value => "v1"}) do 
     # SessionsController
     # POST
     post 'sessions.json', to: 'sessions#create'
@@ -117,7 +117,7 @@ Rails.application.routes.draw do
     put 'thumbnail_documentaries/update/:id.json', to: 'thumbnail_documentaries#update'
     # DELETE
     delete 'thumbnail_documentaries/destroy/:id.json', to: 'thumbnail_documentaries#destroy'
-
+    
     # TestimoniesController
     # GET
     get 'testimonies/list.json', to: 'testimonies#index'
