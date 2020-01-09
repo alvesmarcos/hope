@@ -8,8 +8,6 @@ class User < ApplicationRecord
   # associations
   belongs_to :profile
   belongs_to :role
-  has_many :articles, foreign_key: :created_by_id
-  has_many :facts, foreign_key: :created_by_id
 
   # validations
   validates_presence_of :name, :email, :username, :profile_id, :role_id

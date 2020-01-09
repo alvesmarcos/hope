@@ -4,6 +4,4 @@ class UserSerializer < ActiveModel::Serializer
   # model associations
   belongs_to :profile
   belongs_to :role
-  has_many :articles, foreign_key: :created_by_id
-  has_many :facts, foreign_key: :created_by_id
 end
