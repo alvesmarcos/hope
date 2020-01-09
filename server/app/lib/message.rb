@@ -23,6 +23,22 @@ class Message
     'Account created successfully'
   end
 
+  def self.recovery_email_sent
+    'We sent an email for recovery password. Please check your email inbox.'
+  end
+
+  def self.recovery_token_invalid
+    'Token not valid or expired. Try generating a new token'
+  end
+
+  def self.recovery_password_succeed
+    'Your password was successfully updated, you can sign in with your new password.'
+  end
+
+  def self.media_created
+    'Media created successfully'
+  end
+
   def self.account_not_created
     'Account could not be created'
   end

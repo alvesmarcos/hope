@@ -12,7 +12,7 @@ module V1
     def update
       @article.thumbnail = params[:file]
       @article.save!
-      json_response({ message: "Thumbnail created successfully for article '#{@article.title}'" })
+      json_response({ message: Message.media_created })
     end
     
     # allowed => superuser

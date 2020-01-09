@@ -8,7 +8,7 @@ module V1
       user.generate_password_token!
       # send email using recovery template
       UserMailer.recovery_email(user).deliver_now
-      json_response({ message: 'We sent an email for recovery password. Please check your email inbox.' })
+      json_response({ message: Message.recovery_email_sent })
     end
     
     # allowed => public
@@ -23,9 +23,9 @@ module V1
         user.password = password
         user.password_confirmation = password_confirmation
         user.save!
-        json_response({ message: 'Your password was successfully updated, you can sign in with your new password.'})
+        json_response({ message: Message.recovery_password_succeed })
       else
-        json_response({ message: 'Token not valid or expired. Try generating a new token' }, :not_found)
+        json_response({ message: Message.recovery_token_invalid }, :not_found)
       end
     end
   end

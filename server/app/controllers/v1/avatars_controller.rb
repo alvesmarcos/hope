@@ -10,7 +10,7 @@ module V1
     def update
       @current_user.avatar = params[:file]
       @current_user.save!
-      json_response({ message: "Avatar created successfully for user '#{@current_user.name}'" })
+      json_response({ message: Message.media_created })
     end
 
     # allowed => superuser, user
