@@ -79,7 +79,7 @@ Rails.application.routes.draw do
     # DELETE
     delete 'quotes/destroy/:id.json', to: 'quotes#destroy'
 
-    # FaqController
+    # FaqsController
     # GET
     get 'faqs/list.json', to: 'faqs#index'
     get 'faqs/show/:id.json', to: 'faqs#show'
@@ -89,5 +89,16 @@ Rails.application.routes.draw do
     put 'faqs/update/:id.json', to: 'faqs#update'
     # DELETE
     delete 'faqs/destroy/:id.json', to: 'faqs#destroy'
+
+    # ExpertOpinionsController
+    # GET
+    get 'expert_opinions/list.json', to: 'expert_opinions#index'
+    get 'expert_opinions/show/:id.json', to: 'expert_opinions#show'
+    # POST
+    post 'expert_opinions/create.json', to: 'expert_opinions#create'
+    # PUT
+    put 'expert_opinions/update/:id.json', to: 'expert_opinions#update'
+    # DELETE
+    delete 'expert_opinions/destroy/:id.json', to: 'expert_opinions#destroy'
   end
 end

@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2020_01_02_013443) do
     t.index ["created_by_id"], name: "index_documentaries_on_created_by_id"
   end
 
-  create_table "expert_options", force: :cascade do |t|
+  create_table "expert_opinions", force: :cascade do |t|
     t.string "text", null: false
     t.bigint "created_by_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["created_by_id"], name: "index_expert_options_on_created_by_id"
+    t.index ["created_by_id"], name: "index_expert_opinions_on_created_by_id"
   end
 
   create_table "facts", force: :cascade do |t|
@@ -128,7 +128,7 @@ ActiveRecord::Schema.define(version: 2020_01_02_013443) do
 
   add_foreign_key "articles", "users", column: "created_by_id"
   add_foreign_key "documentaries", "users", column: "created_by_id"
-  add_foreign_key "expert_options", "users", column: "created_by_id"
+  add_foreign_key "expert_opinions", "users", column: "created_by_id"
   add_foreign_key "facts", "users", column: "created_by_id"
   add_foreign_key "faqs", "users", column: "created_by_id"
   add_foreign_key "quotes", "users", column: "created_by_id"
