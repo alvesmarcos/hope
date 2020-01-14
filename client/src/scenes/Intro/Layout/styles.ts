@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { scale, moderateScale } from 'react-native-size-matters';
 
-import { colors, metrics } from '~/styles';
+import { fonts, colors, metrics } from '~/styles';
 
 // MARK: - Components
 
@@ -14,14 +14,16 @@ export const ContainerSlider = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: ${moderateScale(28, 0.3)}px;
+  font-size: ${moderateScale(28, metrics.fontFactor)}px;
+  font-family: ${fonts.primary};
   color: ${colors.white};
   margin-top: ${scale(metrics.basePadding * 2)}px;
   margin-bottom: ${scale(metrics.basePadding)}px;
 `;
 
 export const Description = styled.Text`
-  font-size: ${moderateScale(16, 0.3)}px;
+  font-size: ${moderateScale(18, metrics.fontFactor)}px;
+  font-family: ${fonts.primary};
   color: ${colors.white};
   text-align: center;
 `;
