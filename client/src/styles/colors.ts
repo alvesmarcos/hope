@@ -292,5 +292,7 @@ export default {
     '900': '#263238',
   },
   white: '#FFFFFF',
-  black: '#000000'
+  black: '#000000',
+  primary: '#7b1fa2',
+  primaryDark: '#6a1b9a',
 };

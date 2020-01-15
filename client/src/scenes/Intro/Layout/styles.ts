@@ -3,13 +3,11 @@ import { scale, moderateScale } from 'react-native-size-matters';
 
 import { fonts, colors, metrics } from '~/styles';
 
-// MARK: - Components
-
 export const ContainerSlider = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${colors.purple[700]};
+  background-color: ${colors.primary};
   padding: ${scale(metrics.basePadding)}px;
 `;
 

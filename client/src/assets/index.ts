@@ -1,0 +1,1 @@
+export const LogoImgSrc = require('./img/logo.png');

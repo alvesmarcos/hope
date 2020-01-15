@@ -8,8 +8,6 @@ import { scale } from 'react-native-size-matters';
 import { colors } from '~/styles';
 import { ContainerSlider, Title, Description } from './styles';
 
-// MARK: - Props definitions
-
 interface IData {
   id: string;
   title: string;
@@ -22,12 +20,10 @@ interface ILayoutProps {
   data: IData[];
 }
 
-// MARK: - Layout definition
-
 const Intro: React.FC<ILayoutProps> = ({ data }) => {
   return (
     <>
-      <StatusBar backgroundColor={colors.purple[800]} />
+      <StatusBar backgroundColor={colors.primaryDark} />
       <Swiper
         dotColor={colors.gray[400]}
         activeDotColor={colors.white}
@@ -54,4 +50,4 @@ const Intro: React.FC<ILayoutProps> = ({ data }) => {
   );
 };
 
-export default Intro;
+export default React.memo(Intro);

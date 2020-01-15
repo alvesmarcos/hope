@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { Intro } from './scenes';
+import { Login } from './scenes';
+
+console.disableYellowBox = true;
 
 const App: React.FC = () => {
-  return <Intro />
+  return <Login />
 };
 
 export default App;
