@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Login } from './scenes';
+import { EmailLogin } from './scenes';
 
 console.disableYellowBox = true;
 
 const App: React.FC = () => {
-  return <Login />
+  return <EmailLogin />
 };
 
 export default App;

@@ -1,3 +1,4 @@
 export default {
-  primary: 'Lato-Regular'
+  primary: 'Lato-Regular',
+  primaryBold: 'Lato-Bold',
 };

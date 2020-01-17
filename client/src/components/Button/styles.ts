@@ -1,19 +1,19 @@
 import styled from 'styled-components/native';
-import { borderColor, background, color } from 'styled-system';
+import {
+  borderColor,
+  background,
+  color,
+  BackgroundProps,
+  BorderColorProps,
+  ColorProps,
+} from 'styled-system';
 import { scale, moderateScale } from 'react-native-size-matters';
 
 import { metrics, fonts } from '~/styles';
 
-interface IButtonProps {
-  background: string;
-  borderColor: string;
-}
-
-interface ILabelProps {
-  color: string;
-}
-
-export const Touchable = styled.TouchableOpacity<IButtonProps>`
+export const Touchable = styled.TouchableOpacity<
+  BackgroundProps | BorderColorProps
+>`
   padding: ${scale(metrics.basePadding)}px;
   justify-content: center;
   align-items: center;
@@ -23,7 +23,7 @@ export const Touchable = styled.TouchableOpacity<IButtonProps>`
   ${borderColor};
 `;
 
-export const Label = styled.Text<ILabelProps>`
+export const Label = styled.Text<ColorProps>`
   font-size: ${moderateScale(18, metrics.fontFactor)}px;
   font-family: ${fonts.primary};
   ${color};
