@@ -1,30 +1,58 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import {
+  IconButton,
+  Flex,
+  Button,
+  Container,
+  StatusBar,
+  Text,
+  Input,
+} from '~/components';
 
-import { Button, BackButton, ErrorText, Input } from '~/components';
-import { colors } from '~/styles';
-import { Variants } from '~/styles/variants';
-import { Container, Title, Bold, Header, Footer, Margin } from './styles';
+interface LayoutProps {
+  helpText: string;
+  error: boolean;
+  onPress(): any;
+  onChangeText(text): void;
+}
 
-const EmailLogin: React.FC = () => {
+const Layout: React.FC<LayoutProps> = ({
+  helpText,
+  error,
+  onPress,
+  onChangeText,
+}) => {
   return (
-    <Container>
-      <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
-      <Header>
-        <BackButton />
-        <Margin>
-          <Title>
-            Qual é o seu <Bold>e-mail</Bold>?
-          </Title>
-          <Input keyboardType="email-address" />
-          <ErrorText>E-mail Inválido</ErrorText>
-        </Margin>
-      </Header>
-      <Footer>
-        <Button text="Próximo" variant={Variants.SECONDARY} />
-      </Footer>
+    <Container p="medium">
+      <IconButton name="arrow-left" />
+      <StatusBar variant="secondary" />
+      <Flex m="medium">
+        <Text>
+          Qual é o seu <Text fontFamily="header">e-mail</Text>?
+        </Text>
+        <Input
+          keyboardType="email-address"
+          onChangeText={onChangeText}
+          autoFocus
+          mt="medium"
+          p="none"
+        />
+        <Text
+          color={error ? 'danger' : 'neutralDark'}
+          fontSize="small"
+          mt="medium">
+          {helpText}
+        </Text>
+      </Flex>
+      <Flex>
+        <Flex justifyContent="flex-end">
+          <Button variant="secondary" onPress={onPress}>
+            Próximo
+          </Button>
+        </Flex>
+      </Flex>
     </Container>
   );
 };
 
-export default React.memo(EmailLogin);
+export default React.memo(Layout);

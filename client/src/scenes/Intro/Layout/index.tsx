@@ -1,14 +1,11 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
-import Swiper from 'react-native-swiper';
-import Icon from 'react-native-vector-icons/Feather';
 import ActionButton from 'react-native-action-button';
-import { scale } from 'react-native-size-matters';
+import Swiper from 'react-native-swiper';
 
-import { colors } from '~/styles';
-import { ContainerSlider, Title, Description } from './styles';
+import { StatusBar, Container, Icon, Text, Flex } from '~/components';
+import colors from '~/styles/colors';
 
-interface IData {
+interface Data {
   id: string;
   title: string;
   icon: string;
@@ -16,38 +13,47 @@ interface IData {
   isLast: boolean;
 }
 
-interface ILayoutProps {
-  data: IData[];
+interface LayoutProps {
+  data: Data[];
 }
 
-const Intro: React.FC<ILayoutProps> = ({ data }) => {
+const Layout: React.FC<LayoutProps> = ({ data }) => {
   return (
-    <>
-      <StatusBar backgroundColor={colors.primaryDark} />
+    <Container>
+      <StatusBar variant="primary" />
       <Swiper
-        dotColor={colors.gray[400]}
-        activeDotColor={colors.white}
+        dotColor={colors.neutralDark}
+        activeDotColor={colors.accent}
         loop={false}>
         {data.map(item => (
-          <ContainerSlider key={item.id}>
-            <Icon name={item.icon} color={colors.white} size={scale(96)} />
-            <Title>{item.title}</Title>
-            <Description>{item.description}</Description>
+          <Flex
+            justifyContent="center"
+            alignItems="center"
+            backgroundColor="primary"
+            p="small"
+            key={item.id}>
+            <Icon name={item.icon} fontSize="xxlarge" color="accent" />
+            <Text fontSize="large" color="accent" mt="large">
+              {item.title}
+            </Text>
+            <Text fontSize="small" color="accent" textAlign="center" mt="small">
+              {item.description}
+            </Text>
             <ActionButton
-              buttonColor={colors.white}
+              buttonColor={colors.accent}
               renderIcon={() => (
                 <Icon
-                  color={colors.purple[700]}
                   name={item.isLast ? 'check' : 'arrow-right'}
-                  size={24}
+                  fontSize="medium"
+                  color="primary"
                 />
               )}
             />
-          </ContainerSlider>
+          </Flex>
         ))}
       </Swiper>
-    </>
+    </Container>
   );
 };
 
-export default React.memo(Intro);
+export default React.memo(Layout);
