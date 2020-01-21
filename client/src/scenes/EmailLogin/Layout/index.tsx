@@ -12,19 +12,21 @@ import {
 interface LayoutProps {
   helpText: string;
   error: boolean;
-  onPress(): any;
+  onPressBack(): void;
+  onPressNext(): void;
   onChangeText(text): void;
 }
 
 const Layout: React.FC<LayoutProps> = ({
   helpText,
   error,
-  onPress,
+  onPressBack,
+  onPressNext,
   onChangeText,
 }) => {
   return (
     <Container p="medium">
-      <IconButton name="arrow-left" />
+      <IconButton name="arrow-left" onPress={onPressBack} />
       <StatusBar variant="secondary" />
       <Flex m="medium">
         <Text>
@@ -46,7 +48,7 @@ const Layout: React.FC<LayoutProps> = ({
       </Flex>
       <Flex>
         <Flex justifyContent="flex-end">
-          <Button variant="secondary" onPress={onPress}>
+          <Button variant="secondary" onPress={onPressNext}>
             Próximo
           </Button>
         </Flex>

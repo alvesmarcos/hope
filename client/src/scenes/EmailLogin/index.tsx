@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import validator from 'validator';
 
+import navService from '~/services/NavigationService';
 import LayoutEmailLogin from './Layout';
 
 const EmailLogin: React.FC = () => {
@@ -28,7 +29,11 @@ const EmailLogin: React.FC = () => {
     return true;
   }
 
-  async function onPress() {
+  function back() {
+    navService.push('Login');
+  }
+
+  async function next() {
     if (await handleValidate()) {
     }
   }
@@ -37,7 +42,8 @@ const EmailLogin: React.FC = () => {
   return (
     <LayoutEmailLogin
       onChangeText={onChangeText}
-      onPress={onPress}
+      onPressBack={back}
+      onPressNext={next}
       helpText={message}
       error={error}
     />
