@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import validator from 'validator';
 
 import navService from '~/services/NavigationService';
-import LayoutEmailLogin from './Layout';
+import LayoutNameLogin from './Layout';
 
-const EmailLogin: React.FC = () => {
+const NameLogin: React.FC = () => {
   // consts
-  const hint = 'Ex. seunome@mail.com';
+  const hint = 'Ex. Jane Doe';
   // states
   const [message, setMessage] = useState<string>(hint);
   const [error, setError] = useState<boolean>(false);
@@ -19,11 +19,11 @@ const EmailLogin: React.FC = () => {
   }
 
   async function handleValidate(): Promise<boolean> {
-    const isEmail = validator.isEmail(inputText);
+    const isLength = validator.isLength(inputText, { min: 3 });
 
-    if (isEmail) {
+    if (isLength) {
     } else {
-      setMessage('E-mail inválido');
+      setMessage('Nome inválido');
       setError(true);
     }
     return true;
@@ -35,13 +35,12 @@ const EmailLogin: React.FC = () => {
 
   async function next() {
     if (await handleValidate()) {
-      navService.push('NameLogin');
     }
   }
 
   // render
   return (
-    <LayoutEmailLogin
+    <LayoutNameLogin
       onChangeText={onChangeText}
       onPressBack={back}
       onPressNext={next}
@@ -51,4 +50,4 @@ const EmailLogin: React.FC = () => {
   );
 };
 
-export default EmailLogin;
+export default NameLogin;

@@ -1,7 +1,7 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { Login, EmailLogin } from '~/scenes';
+import { Login, EmailLogin, NameLogin } from '~/scenes';
 
 const Routes = (userLogged = false) =>
   createAppContainer(
@@ -11,6 +11,7 @@ const Routes = (userLogged = false) =>
           {
             Login,
             EmailLogin,
+            NameLogin,
           },
           {
             headerMode: 'none',
