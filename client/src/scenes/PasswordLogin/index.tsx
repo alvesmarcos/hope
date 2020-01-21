@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import validator from 'validator';
 
 import navService from '~/services/NavigationService';
-import LayoutNameLogin from './Layout';
+import LayoutPasswordLogin from './Layout';
 
-const NameLogin: React.FC = () => {
+const PasswordLogin: React.FC = () => {
   // consts
-  const hint = 'Ex. Jane Doe';
+  const hint = 'No mínimo 6 caracteres';
   // states
   const [message, setMessage] = useState<string>(hint);
   const [error, setError] = useState<boolean>(false);
@@ -19,11 +19,11 @@ const NameLogin: React.FC = () => {
   }
 
   async function handleValidate(): Promise<boolean> {
-    const isLength = validator.isLength(inputText, { min: 3 });
+    const isLength = validator.isLength(inputText, { min: 6 });
 
     if (isLength) {
     } else {
-      setMessage('Nome inválido');
+      setMessage('Senha inválida');
       setError(true);
     }
     return true;
@@ -35,13 +35,12 @@ const NameLogin: React.FC = () => {
 
   async function next() {
     if (await handleValidate()) {
-      navService.push('PasswordLogin');
     }
   }
 
   // render
   return (
-    <LayoutNameLogin
+    <LayoutPasswordLogin
       onChangeText={onChangeText}
       onPressBack={back}
       onPressNext={next}
@@ -51,4 +50,4 @@ const NameLogin: React.FC = () => {
   );
 };
 
-export default NameLogin;
+export default PasswordLogin;
