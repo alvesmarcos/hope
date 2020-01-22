@@ -75,9 +75,17 @@ export interface TextElementProps
     TextStyleProps,
     ChildrenProps {}
 
-export interface TouchableStyleProps extends ButtonStyleProps, BorderProps, SpaceProps {}
+export interface TouchableStyleProps
+  extends ButtonStyleProps,
+    BorderProps,
+    SpaceProps,
+    FlexboxProps {}
 
 export interface TouchableElementProps
   extends TouchableStyleProps,
     TouchableOpacityProps,
     ChildrenProps {}
+
+export interface TouchableElementWithoutChildrenProps
+  extends TouchableStyleProps,
+    TouchableOpacityProps {}

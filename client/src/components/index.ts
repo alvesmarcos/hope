@@ -8,6 +8,8 @@ import StatusBar from './root/StatusBar';
 import Text from './root/Text';
 import Input from './root/Input';
 
+import CardProfile from './custom/CardProfile';
+
 export {
   Container,
   Flex,
@@ -18,4 +20,5 @@ export {
   StatusBar,
   Text,
   Input,
+  CardProfile,
 };

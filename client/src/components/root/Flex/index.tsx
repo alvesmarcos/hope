@@ -9,7 +9,6 @@ const Flex: React.FC<FlexElementProps> = ({ children, ...rest }) => {
 
 Flex.defaultProps = {
   flex: 1,
-  backgroundColor: 'paper',
 };
 
 export default React.memo(Flex);
