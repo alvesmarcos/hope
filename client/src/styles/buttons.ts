@@ -6,7 +6,19 @@ export default {
     borderColor: colors.accent,
   },
   secondary: {
-    background: colors.accent,
+    backgroundColor: colors.accent,
     borderColor: colors.accent,
+  },
+  primaryLight: {
+    backgroundColor: colors.primaryLight,
+    borderColor: colors.primaryLight,
+  },
+  light: {
+    backgroundColor: colors.transparent,
+    borderColor: colors.neutralLight,
+  },
+  none: {
+    backgroundColor: colors.transparent,
+    borderColor: colors.transparent,
   },
 };

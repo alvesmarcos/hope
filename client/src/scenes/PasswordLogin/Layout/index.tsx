@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({
       <IconButton name="arrow-left" onPress={onPressBack} />
       <StatusBar variant="secondary" />
       <Flex m="medium">
-        <Text>
+      <Text color="neutralDark" fontSize="small" mt="medium">
           Estamos quase lá!
         </Text>
         <Text mt="small">

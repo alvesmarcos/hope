@@ -35,6 +35,7 @@ const PasswordLogin: React.FC = () => {
 
   async function next() {
     if (await handleValidate()) {
+      navService.push('ProfileLogin');
     }
   }
 

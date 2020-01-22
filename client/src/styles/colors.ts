@@ -1,6 +1,7 @@
 export default {
   primary: '#7b1fa2',
   primaryDark: '#6a1b9a',
+  primaryLight: '#e1bee7',
   accent: '#ffffff',
   success: '#76ff03',
   warning: '#ffd740',

@@ -1,7 +1,14 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import { Login, EmailLogin, NameLogin, PasswordLogin } from '~/scenes';
+import {
+  Login,
+  EmailLogin,
+  NameLogin,
+  PasswordLogin,
+  ProfileLogin,
+  Intro,
+} from '~/scenes';
 
 const Routes = (userLogged = false) =>
   createAppContainer(
@@ -13,15 +20,8 @@ const Routes = (userLogged = false) =>
             EmailLogin,
             NameLogin,
             PasswordLogin,
-          },
-          {
-            headerMode: 'none',
-          },
-        ),
-        Intro: createStackNavigator(
-          {
-            Login,
-            EmailLogin,
+            ProfileLogin,
+            Intro,
           },
           {
             headerMode: 'none',
@@ -29,7 +29,7 @@ const Routes = (userLogged = false) =>
         ),
       },
       {
-        initialRouteName: userLogged ? 'Intro' : 'Login',
+        initialRouteName: userLogged ? 'Login' : 'Login',
       },
     ),
   );
