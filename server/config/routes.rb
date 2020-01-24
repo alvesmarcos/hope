@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     put 'avatars/update.json', to: 'avatars#update'
     # DELETE
     delete 'avatars/destroy.json', to: 'avatars#destroy'
+
+    # RolesController
+    # GET
+    get 'roles/list.json', to: 'roles#index'
     
     # UsersController
     # GET
