@@ -6,7 +6,7 @@ import { StatusBar, Container, Icon, Text, Flex } from '~/components';
 import colors from '~/styles/colors';
 
 interface Data {
-  id: string;
+  id: number;
   title: string;
   icon: string;
   description: string;
@@ -15,9 +15,10 @@ interface Data {
 
 interface LayoutProps {
   data: Data[];
+  onPress(currentItem: number): void;
 }
 
-const Layout: React.FC<LayoutProps> = ({ data }) => {
+const Layout: React.FC<LayoutProps> = ({ data, onPress }) => {
   return (
     <Container>
       <StatusBar variant="primary" />
@@ -41,6 +42,7 @@ const Layout: React.FC<LayoutProps> = ({ data }) => {
             </Text>
             <ActionButton
               buttonColor={colors.accent}
+              onPress={() => onPress(item.id)}
               renderIcon={() => (
                 <Icon
                   name={item.isLast ? 'check' : 'arrow-right'}

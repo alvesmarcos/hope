@@ -7,6 +7,7 @@ import {
   StatusBar,
   Text,
   CardProfile,
+  Scroll,
 } from '~/components';
 
 interface Data {
@@ -44,7 +45,7 @@ const Layout: React.FC<LayoutProps> = ({
   }
 
   return (
-    <Container p="medium">
+    <Scroll p="medium">
       <IconButton name="arrow-left" onPress={onPressBack} />
       <StatusBar variant="secondary" />
       <Flex m="medium">
@@ -64,14 +65,14 @@ const Layout: React.FC<LayoutProps> = ({
           {renderCard(data[3])}
         </Flex>
       </Flex>
-      <Flex flex={0.1}>
+      <Flex paddingBottom="large">
         <Flex justifyContent="flex-end">
           <Button variant="secondary" onPress={onPressNext}>
             Finalizar
           </Button>
         </Flex>
       </Flex>
-    </Container>
+    </Scroll>
   );
 };
 
