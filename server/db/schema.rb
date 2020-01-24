@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 2020_01_02_013443) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "username", null: false
     t.string "password_digest", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -124,7 +123,6 @@ ActiveRecord::Schema.define(version: 2020_01_02_013443) do
     t.index ["email"], name: "index_users_on_email"
     t.index ["profile_id"], name: "index_users_on_profile_id"
     t.index ["role_id"], name: "index_users_on_role_id"
-    t.index ["username"], name: "index_users_on_username"
   end
 
   add_foreign_key "articles", "users", column: "created_by_id"
