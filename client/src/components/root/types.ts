@@ -4,6 +4,8 @@ import {
   TouchableOpacityProps,
   ViewProps,
   TextInputProps,
+  ScrollViewProps,
+  ImageProps,
 } from 'react-native';
 import {
   FontSizeProps,
@@ -36,6 +38,7 @@ export interface IconStyleProps extends FontSizeProps, ColorProps {}
 
 export interface IconElementProps extends IconStyleProps {
   name: string;
+  variant?: 'feather' | 'fontawesome';
 }
 
 export interface IconButtonElementProps
@@ -50,12 +53,27 @@ export interface InputStyleProps
 
 export interface InputElementProps extends TextInputProps, InputStyleProps {}
 
-export interface FlexStyleProps extends FlexboxProps, ColorProps, SpaceProps {}
+export interface FlexStyleProps
+  extends FlexboxProps,
+    ColorProps,
+    SpaceProps,
+    BorderProps,
+    LayoutProps {}
 
 export interface FlexElementProps
   extends ViewProps,
     FlexStyleProps,
-    FlexStyleProps,
+    ColorProps,
+    ChildrenProps {}
+
+export interface ScrollStyleProps
+  extends FlexboxProps,
+    ColorProps,
+    SpaceProps {}
+
+export interface ScrollElementProps
+  extends ScrollViewProps,
+    ScrollStyleProps,
     ColorProps,
     ChildrenProps {}
 

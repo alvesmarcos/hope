@@ -19,6 +19,9 @@ const Button: React.FC<TouchableElementProps> = ({
     case 'secondary':
       textProps.color = 'primary';
       break;
+    case 'primaryLight':
+      textProps.color = 'primary';
+      break;
     default:
       break;
   }
@@ -34,9 +37,9 @@ const Button: React.FC<TouchableElementProps> = ({
 
 Button.defaultProps = {
   variant: 'secondary',
-  padding: 'medium',
+  p: 'medium',
   borderWidth: 'thin',
-  borderRadius: 'medium'
+  borderRadius: 'medium',
 };
 
 export default React.memo(Button);

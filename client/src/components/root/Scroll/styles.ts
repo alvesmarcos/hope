@@ -18,16 +18,11 @@ import {
   paddingLeft,
   paddingRight,
   paddingTop,
-  borderRadius,
-  border,
-  layout,
 } from 'styled-system';
 
-import { FlexStyleProps } from '~/components/root/types';
+import { ScrollStyleProps } from '~/components/root/types';
 
-export const Box = styled.View<FlexStyleProps>`
-  ${layout};
-  ${border};
+export const Box = styled.ScrollView<ScrollStyleProps>`
   ${color};
   ${flex};
   ${alignItems};
@@ -46,5 +41,4 @@ export const Box = styled.View<FlexStyleProps>`
   ${paddingLeft};
   ${paddingRight};
   ${paddingTop};
-  ${borderRadius};
 `;
