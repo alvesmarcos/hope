@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import validator from 'validator';
 
+import api from '~/services/HopeService';
+import { setEmail } from '~/store/modules/account/actions';
 import navService from '~/services/NavigationService';
 import LayoutEmailLogin from './Layout';
 
@@ -8,9 +11,12 @@ const EmailLogin: React.FC = () => {
   // consts
   const hint = 'Ex. seunome@mail.com';
   // states
+  const [loading, setLoading] = useState<boolean>(false);
   const [message, setMessage] = useState<string>(hint);
   const [error, setError] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>('');
+  // redux
+  const dispatch = useDispatch();
 
   function onChangeText(text: string) {
     setInputText(text);
@@ -19,14 +25,29 @@ const EmailLogin: React.FC = () => {
   }
 
   async function handleValidate(): Promise<boolean> {
-    const isEmail = validator.isEmail(inputText);
+    setLoading(true);
+    try {
+      const isEmail = validator.isEmail(inputText);
 
-    if (isEmail) {
-    } else {
+      if (isEmail) {
+        const isAvailable = await api.verifyEmail(inputText);
+        if (isAvailable) {
+          return true;
+        }
+        setMessage('E-mail indisponível no momento');
+        setError(true);
+        return false;
+      }
       setMessage('E-mail inválido');
       setError(true);
+      return false;
+    } catch (e) {
+      setMessage('Serviço de verificação indisponível no momento');
+      setError(true);
+      return false;
+    } finally {
+      setLoading(false);
     }
-    return true;
   }
 
   function back() {
@@ -35,6 +56,7 @@ const EmailLogin: React.FC = () => {
 
   async function next() {
     if (await handleValidate()) {
+      dispatch(setEmail(inputText));
       navService.push('NameLogin');
     }
   }
@@ -45,6 +67,7 @@ const EmailLogin: React.FC = () => {
       onChangeText={onChangeText}
       onPressBack={back}
       onPressNext={next}
+      loading={loading}
       helpText={message}
       error={error}
     />

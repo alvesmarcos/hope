@@ -7,11 +7,13 @@ import {
   StatusBar,
   Text,
   Input,
+  LoadingIndicator,
 } from '~/components';
 
 interface LayoutProps {
   helpText: string;
   error: boolean;
+  loading: boolean;
   onPressBack(): void;
   onPressNext(): void;
   onChangeText(text): void;
@@ -20,6 +22,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({
   helpText,
   error,
+  loading,
   onPressBack,
   onPressNext,
   onChangeText,
@@ -48,9 +51,13 @@ const Layout: React.FC<LayoutProps> = ({
       </Flex>
       <Flex>
         <Flex justifyContent="flex-end">
-          <Button variant="secondary" onPress={onPressNext}>
-            Próximo
-          </Button>
+          {loading ? (
+            <LoadingIndicator variant="primary" size="large" />
+          ) : (
+            <Button variant="secondary" onPress={onPressNext}>
+              Próximo
+            </Button>
+          )}
         </Flex>
       </Flex>
     </Container>

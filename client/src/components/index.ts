@@ -9,6 +9,7 @@ import Text from './root/Text';
 import Input from './root/Input';
 import Scroll from './root/Scroll';
 import Image from './root/Image';
+import LoadingIndicator from './root/LoadingIndicator';
 
 import CardProfile from './custom/CardProfile';
 import Avatar from './custom/Avatar';
@@ -51,4 +52,5 @@ export {
   CardDocumentary,
   Image,
   Header,
+  LoadingIndicator,
 };

@@ -6,6 +6,7 @@ import {
   TextInputProps,
   ScrollViewProps,
   ImageProps,
+  ActivityIndicatorProps,
 } from 'react-native';
 import {
   FontSizeProps,
@@ -78,6 +79,10 @@ export interface ScrollElementProps
     ChildrenProps {}
 
 export interface StatusBarElementProps {
+  variant: 'primary' | 'secondary';
+}
+
+export interface LoadingElementProps extends ActivityIndicatorProps {
   variant: 'primary' | 'secondary';
 }
 

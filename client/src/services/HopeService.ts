@@ -8,7 +8,7 @@ class HopeService {
 
   private constructor() {
     this.api = axios.create({
-      baseURL: '',
+      baseURL: 'http://10.0.2.2:3000/v1',
     });
   }
 
@@ -35,6 +35,12 @@ class HopeService {
     });
     const { token } = response.data;
     return token;
+  }
+
+  async verifyEmail(email: string): Promise<boolean> {
+    const response = await this.api.post(Endpoint.VERIFY_EMAILS, { email });
+    const { available } = response.data;
+    return available;
   }
 }
 

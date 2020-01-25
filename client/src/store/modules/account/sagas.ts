@@ -3,10 +3,11 @@ import { put, all, takeLatest, select, call } from 'redux-saga/effects';
 import api from '~/services/HopeService';
 import { successCreateAccount, failureCreateAccount } from './actions';
 import { AccountTypes } from './types';
+import { getAccountData } from './selectors';
 
 function* createAccount() {
   try {
-    const data = yield select(state => state.token);
+    const data = yield select(getAccountData);
     const token = yield call(
       api.createAccount,
       data.name,

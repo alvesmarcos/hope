@@ -75,7 +75,7 @@ const Routes = (userLogged = false) =>
         ),
       },
       {
-        initialRouteName: userLogged ? 'Login' : 'Home',
+        initialRouteName: !userLogged ? 'Login' : 'Home',
       },
     ),
   );
