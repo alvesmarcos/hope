@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     # RolesController
     # GET
     get 'roles/list.json', to: 'roles#index'
+
+    # ProfilesController
+    # GET
+    get 'profiles/list.json', to: 'profiles#index'
     
     # UsersController
     # GET
