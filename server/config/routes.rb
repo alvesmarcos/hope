@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     # GET
     get 'profiles/list.json', to: 'profiles#index'
     
+    # VerifyEmailController
+    get 'verify_emails/list.json', to: 'verify_emails#index'
+    post 'verify_emails/create.json', to: 'verify_emails#create'
+
     # FeedController
     # GET
     get 'feeds/list.json', to: 'feeds#index'
