@@ -23,6 +23,10 @@ Rails.application.routes.draw do
     # GET
     get 'profiles/list.json', to: 'profiles#index'
     
+    # FeedController
+    # GET
+    get 'feeds/list.json', to: 'feeds#index'
+
     # UsersController
     # GET
     get 'users/list.json', to: 'users#index'
