@@ -1,11 +1,6 @@
 module V1
   class VerifyEmailsController < ApplicationController
     # only role admin can post a role
-    before_action only: [:create] do
-      authorize_request(:superuser, :user)
-    end
-
-    # only role admin can post a role
     before_action only: [:index] do
      authorize_request(:superuser)
     end
