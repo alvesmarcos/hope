@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import validator from 'validator';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
 import api from '~/services/HopeService';
 import { setEmail } from '~/store/modules/account/actions';
 import navService from '~/services/NavigationService';
 import LayoutEmailLogin from './Layout';
 
-const EmailLogin: React.FC = () => {
+interface NavigationParams {
+  isLogin: boolean;
+}
+
+type NavigationProps = NavigationScreenProp<NavigationState, NavigationParams>;
+
+interface EmailLoginProps {
+  navigation: NavigationProps;
+}
+
+const EmailLogin: React.FC<EmailLoginProps> = ({ navigation }) => {
   // consts
   const hint = 'Ex. seunome@mail.com';
   // states
@@ -24,12 +35,21 @@ const EmailLogin: React.FC = () => {
     setMessage(hint);
   }
 
+  function isEmail(): boolean {
+    const isEmail = validator.isEmail(inputText);
+
+    if (isEmail) {
+      return true;
+    }
+    setMessage('E-mail inválido');
+    setError(true);
+    return false;
+  }
+
   async function handleValidate(): Promise<boolean> {
     setLoading(true);
     try {
-      const isEmail = validator.isEmail(inputText);
-
-      if (isEmail) {
+      if (isEmail()) {
         const isAvailable = await api.verifyEmail(inputText);
         if (isAvailable) {
           return true;
@@ -38,8 +58,6 @@ const EmailLogin: React.FC = () => {
         setError(true);
         return false;
       }
-      setMessage('E-mail inválido');
-      setError(true);
       return false;
     } catch (e) {
       setMessage('Não foi possível verificar seu e-mail');
@@ -55,10 +73,14 @@ const EmailLogin: React.FC = () => {
   }
 
   async function next() {
-    if (await handleValidate()) {
-      dispatch(setEmail(inputText));
+    const isLogin = navigation.getParam('isLogin');
+
+    if (isLogin && isEmail()) {
+      navService.push('PasswordLogin', { isLogin });
+    } else if (!isLogin && (await handleValidate())) {
       navService.push('NameLogin');
     }
+    dispatch(setEmail(inputText));
   }
 
   // render

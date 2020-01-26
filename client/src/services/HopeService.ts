@@ -37,6 +37,12 @@ class HopeService {
     return token;
   }
 
+  async signIn(email: string, password: string) {
+    const response = await this.api.post(Endpoint.SESSION, { email, password });
+    const { token } = response.data;
+    return token;
+  }
+
   async verifyEmail(email: string): Promise<boolean> {
     const response = await this.api.post(Endpoint.VERIFY_EMAILS, { email });
     const { available } = response.data;

@@ -5,11 +5,11 @@ import LayoutLogin from './Layout';
 
 const Login: React.FC = () => {
   function createAccount() {
-    navService.push('EmailLogin');
+    navService.push('EmailLogin', { isLogin: false });
   }
 
   function signIn() {
-    navService.push('EmailLogin');
+    navService.push('EmailLogin', { isLogin: true });
   }
 
   return (

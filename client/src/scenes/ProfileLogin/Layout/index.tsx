@@ -77,7 +77,7 @@ const Layout: React.FC<LayoutProps> = ({
       <Flex paddingBottom="large">
         <Flex justifyContent="flex-end">
           {loading ? (
-            <LoadingIndicator variant="primary" />
+            <LoadingIndicator variant="primary" size="large" />
           ) : (
             <Button variant="secondary" onPress={onPressNext}>
               Finalizar

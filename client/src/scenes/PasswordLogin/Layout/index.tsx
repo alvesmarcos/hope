@@ -7,9 +7,12 @@ import {
   StatusBar,
   Text,
   Input,
+  LoadingIndicator,
 } from '~/components';
 
 interface LayoutProps {
+  isLogin: boolean;
+  loading: boolean;
   text: string;
   helpText: string;
   error: boolean;
@@ -19,6 +22,8 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({
+  isLogin,
+  loading,
   text,
   helpText,
   error,
@@ -28,14 +33,27 @@ const Layout: React.FC<LayoutProps> = ({
 }) => {
   return (
     <Container p="medium">
-      <IconButton name="arrow-left" onPress={onPressBack} />
+      <Flex
+        flex={0.1}
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center">
+        <IconButton name="arrow-left" onPress={onPressBack} />
+        <IconButton name="refresh-ccw" onPress={onPressBack} />
+      </Flex>
       <StatusBar variant="secondary" />
       <Flex m="medium">
         <Text color="neutralDark" fontSize="small" mt="medium">
-          Estamos quase lá!
+          {isLogin ? 'Esqueceu a senha?' : 'Estamos quase lá!'}
         </Text>
+        {isLogin && (
+          <Text color="neutralDark" fontSize="small" mt="small">
+            Toque no ícone de atualização
+          </Text>
+        )}
         <Text mt="small">
-          Escolha sua <Text fontFamily="header">senha</Text> de acesso
+          {isLogin ? 'Insira' : 'Escolha'} sua{' '}
+          <Text fontFamily="header">senha</Text> de acesso
         </Text>
         <Input
           onChangeText={onChangeText}
@@ -45,18 +63,31 @@ const Layout: React.FC<LayoutProps> = ({
           p="none"
           secureTextEntry
         />
-        <Text
-          color={error ? 'danger' : 'neutralDark'}
-          fontSize="small"
-          mt="medium">
-          {helpText}
-        </Text>
+        {isLogin ? (
+          <Text
+            color={error ? 'danger' : 'neutralDark'}
+            fontSize="small"
+            mt="medium">
+            {error ? 'Ops! Não conseguimos autenticar sua conta, tente novamente.' : ''}
+          </Text>
+        ) : (
+          <Text
+            color={error ? 'danger' : 'neutralDark'}
+            fontSize="small"
+            mt="medium">
+            {helpText}
+          </Text>
+        )}
       </Flex>
       <Flex>
         <Flex justifyContent="flex-end">
-          <Button variant="secondary" onPress={onPressNext}>
-            Próximo
-          </Button>
+          {loading ? (
+            <LoadingIndicator variant="primary" size="large" />
+          ) : (
+            <Button variant="secondary" onPress={onPressNext}>
+              {isLogin ? 'Entrar' : 'Próximo'}
+            </Button>
+          )}
         </Flex>
       </Flex>
     </Container>

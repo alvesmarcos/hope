@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
+import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
-import { setPassword } from '~/store/modules/account/actions';
+import { reqLogin, setPassword } from '~/store/modules/account/actions';
 import navService from '~/services/NavigationService';
 import LayoutPasswordLogin from './Layout';
+import {
+  getAccountLoading,
+  getAccountError,
+} from '~/store/modules/account/selectors';
 
-const PasswordLogin: React.FC = () => {
+interface NavigationParams {
+  isLogin: boolean;
+}
+
+type NavigationProps = NavigationScreenProp<NavigationState, NavigationParams>;
+
+interface PasswordLogin {
+  navigation: NavigationProps;
+}
+
+const PasswordLogin: React.FC<PasswordLogin> = ({ navigation }) => {
   // consts
+  const isLogin = navigation.getParam('isLogin');
   const hint = 'No mínimo 6 caracteres';
   // states
   const [message, setMessage] = useState<string>(hint);
@@ -15,6 +31,8 @@ const PasswordLogin: React.FC = () => {
   const [inputText, setInputText] = useState<string>('');
   // redux
   const dispatch = useDispatch();
+  const errorReducer = useSelector(getAccountError);
+  const loading = useSelector(getAccountLoading);
 
   function onChangeText(text: string) {
     setInputText(text);
@@ -38,9 +56,12 @@ const PasswordLogin: React.FC = () => {
   }
 
   function next() {
-    if (handleValidate()) {
-      dispatch(setPassword(inputText));
+    dispatch(setPassword(inputText));
+
+    if (!isLogin && handleValidate()) {
       navService.push('ProfileLogin');
+    } else if (isLogin) {
+      dispatch(reqLogin());
     }
   }
 
@@ -50,9 +71,11 @@ const PasswordLogin: React.FC = () => {
       onChangeText={onChangeText}
       onPressBack={back}
       onPressNext={next}
+      isLogin={isLogin}
       text={inputText}
       helpText={message}
-      error={error}
+      error={isLogin ? errorReducer : error}
+      loading={loading}
     />
   );
 };
