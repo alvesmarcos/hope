@@ -4,12 +4,12 @@ import { reactotronRedux } from 'reactotron-redux';
 import sagaPlugin from 'reactotron-redux-saga';
 
 if (__DEV__) {
-  const tron = Reactotron.configure({
-    host: '192.168.0.4',
-  })
+  const tron = Reactotron.setAsyncStorageHandler(AsyncStorage)
+    .configure({
+      host: '192.168.0.4',
+    })
     .useReactNative()
     .use(reactotronRedux())
-    .setAsyncStorageHandler(AsyncStorage)
     .use(sagaPlugin())
     .connect();
 

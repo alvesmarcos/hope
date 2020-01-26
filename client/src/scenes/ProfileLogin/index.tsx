@@ -1,16 +1,29 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import navService from '~/services/NavigationService';
+import { setProfile, reqCreateAccount } from '~/store/modules/account/actions';
+import {
+  getAccountLoading,
+  getAccountError,
+} from '~/store/modules/account/selectors';
 import data from './data';
 import LayoutProfileLogin from './Layout';
 
 const ProfileLogin: React.FC = () => {
+  // states
   const [dataState, setDataState] = useState(data);
+  // redux
+  const loading = useSelector(getAccountLoading);
+  const error = useSelector(getAccountError);
+  const dispatch = useDispatch();
 
   function selectCard(id: number) {
     data.forEach(item => {
       item.actived = item.id === id;
     });
+    dispatch(setProfile(id));
+
     setDataState([...data]);
   }
 
@@ -19,16 +32,18 @@ const ProfileLogin: React.FC = () => {
   }
 
   function next() {
-    navService.push('Intro');
+    dispatch(reqCreateAccount());
   }
 
   // render
   return (
     <LayoutProfileLogin
       data={dataState}
+      loading={loading}
       onPressCard={selectCard}
       onPressBack={back}
       onPressNext={next}
+      error={error}
     />
   );
 };

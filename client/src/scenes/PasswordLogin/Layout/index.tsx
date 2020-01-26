@@ -10,6 +10,7 @@ import {
 } from '~/components';
 
 interface LayoutProps {
+  text: string;
   helpText: string;
   error: boolean;
   onPressBack(): void;
@@ -18,6 +19,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({
+  text,
   helpText,
   error,
   onPressBack,
@@ -29,7 +31,7 @@ const Layout: React.FC<LayoutProps> = ({
       <IconButton name="arrow-left" onPress={onPressBack} />
       <StatusBar variant="secondary" />
       <Flex m="medium">
-      <Text color="neutralDark" fontSize="small" mt="medium">
+        <Text color="neutralDark" fontSize="small" mt="medium">
           Estamos quase lá!
         </Text>
         <Text mt="small">
@@ -37,6 +39,7 @@ const Layout: React.FC<LayoutProps> = ({
         </Text>
         <Input
           onChangeText={onChangeText}
+          value={text}
           autoFocus
           mt="medium"
           p="none"

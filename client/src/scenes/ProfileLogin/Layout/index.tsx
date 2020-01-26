@@ -3,11 +3,11 @@ import {
   IconButton,
   Flex,
   Button,
-  Container,
   StatusBar,
   Text,
   CardProfile,
   Scroll,
+  LoadingIndicator,
 } from '~/components';
 
 interface Data {
@@ -20,6 +20,8 @@ interface Data {
 
 interface LayoutProps {
   data: Data[];
+  loading: boolean;
+  error: boolean;
   onPressCard(id: number): void;
   onPressBack(): void;
   onPressNext(): void;
@@ -27,6 +29,8 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({
   data,
+  error,
+  loading,
   onPressCard,
   onPressBack,
   onPressNext,
@@ -49,8 +53,13 @@ const Layout: React.FC<LayoutProps> = ({
       <IconButton name="arrow-left" onPress={onPressBack} />
       <StatusBar variant="secondary" />
       <Flex m="medium">
-        <Text color="neutralDark" fontSize="small" mt="medium">
-          Só mais uma coisinha ...
+        <Text
+          color={error ? 'danger' : 'neutralDark'}
+          fontSize="small"
+          mt="medium">
+          {error
+            ? 'Ops! Não conseguimos criar sua conta, tente novamente.'
+            : 'Só mais uma coisinha ...'}
         </Text>
         <Text mt="small">
           Com qual desses <Text fontFamily="header">perfis</Text> você mais se
@@ -67,9 +76,13 @@ const Layout: React.FC<LayoutProps> = ({
       </Flex>
       <Flex paddingBottom="large">
         <Flex justifyContent="flex-end">
-          <Button variant="secondary" onPress={onPressNext}>
-            Finalizar
-          </Button>
+          {loading ? (
+            <LoadingIndicator variant="primary" />
+          ) : (
+            <Button variant="secondary" onPress={onPressNext}>
+              Finalizar
+            </Button>
+          )}
         </Flex>
       </Flex>
     </Scroll>

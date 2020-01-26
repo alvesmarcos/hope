@@ -42,7 +42,7 @@ const EmailLogin: React.FC = () => {
       setError(true);
       return false;
     } catch (e) {
-      setMessage('Serviço de verificação indisponível no momento');
+      setMessage('Não foi possível verificar seu e-mail');
       setError(true);
       return false;
     } finally {
@@ -67,6 +67,7 @@ const EmailLogin: React.FC = () => {
       onChangeText={onChangeText}
       onPressBack={back}
       onPressNext={next}
+      text={inputText}
       loading={loading}
       helpText={message}
       error={error}

@@ -11,6 +11,7 @@ import {
 } from '~/components';
 
 interface LayoutProps {
+  text: string;
   helpText: string;
   error: boolean;
   loading: boolean;
@@ -20,6 +21,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({
+  text,
   helpText,
   error,
   loading,
@@ -38,6 +40,7 @@ const Layout: React.FC<LayoutProps> = ({
         <Input
           keyboardType="email-address"
           onChangeText={onChangeText}
+          value={text}
           autoFocus
           mt="medium"
           p="none"

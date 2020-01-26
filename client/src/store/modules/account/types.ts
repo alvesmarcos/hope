@@ -1,4 +1,4 @@
-  export enum AccountTypes {
+export enum AccountTypes {
   LOGIN_REQUEST = '@account/LOGIN_REQUEST',
   LOGIN_SUCCESS = '@account/LOGIN_SUCCESS',
   LOGIN_FAILURE = '@account/LOGIN_FAILURE',
@@ -22,13 +22,10 @@ export interface AccountState {
   readonly data: Account;
   readonly token: string;
   readonly loading: boolean;
-  readonly error: string;
+  readonly error: boolean;
 }
 
 export interface AccountCreators {
   type: AccountTypes;
-}
-
-export interface AccountCreatorsWithPayload extends AccountCreators {
-  payload: string | number;
+  payload?: string | number;
 }

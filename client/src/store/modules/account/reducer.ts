@@ -6,7 +6,7 @@ import { AccountState, AccountTypes } from './types';
 const INITIAL_STATE: AccountState = {
   data: { name: '', email: '', password: '', profile_id: 0 },
   token: '',
-  error: '',
+  error: false,
   loading: false,
 };
 
@@ -16,18 +16,18 @@ const reducer: Reducer<AccountState> = (state = INITIAL_STATE, action) => {
       case AccountTypes.LOGIN_REQUEST:
       case AccountTypes.CREATE_ACCOUNT_REQUEST:
         draft.loading = true;
-        draft.error = '';
+        draft.error = false;
         break;
       case AccountTypes.LOGIN_FAILURE:
       case AccountTypes.CREATE_ACCOUNT_FAILURE:
         draft.loading = false;
-        draft.error = action.payload;
+        draft.error = true;
         break;
       case AccountTypes.LOGIN_SUCCESS:
       case AccountTypes.CREATE_ACCOUNT_SUCCESS:
         draft.token = action.payload;
         draft.loading = true;
-        draft.error = '';
+        draft.error = false;
         break;
       case AccountTypes.SET_NAME_ACCOUNT:
         draft.data.name = action.payload;

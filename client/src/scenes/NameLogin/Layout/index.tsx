@@ -10,6 +10,7 @@ import {
 } from '~/components';
 
 interface LayoutProps {
+  text: string;
   helpText: string;
   error: boolean;
   onPressBack(): void;
@@ -18,6 +19,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({
+  text,
   helpText,
   error,
   onPressBack,
@@ -32,7 +34,13 @@ const Layout: React.FC<LayoutProps> = ({
         <Text>
           Qual é o seu <Text fontFamily="header">nome?</Text>
         </Text>
-        <Input onChangeText={onChangeText} autoFocus mt="medium" p="none" />
+        <Input
+          onChangeText={onChangeText}
+          value={text}
+          autoFocus
+          mt="medium"
+          p="none"
+        />
         <Text
           color={error ? 'danger' : 'neutralDark'}
           fontSize="small"

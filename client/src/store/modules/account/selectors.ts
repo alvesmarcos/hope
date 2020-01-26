@@ -5,4 +5,12 @@ const getAccountData = (state: ApplicationState): Account => {
   return state.accountReducer.data;
 };
 
-export { getAccountData };
+const getAccountLoading = (state: ApplicationState): boolean => {
+  return state.accountReducer.loading;
+};
+
+const getAccountError = (state: ApplicationState): boolean => {
+  return state.accountReducer.error;
+};
+
+export { getAccountData, getAccountLoading, getAccountError };
