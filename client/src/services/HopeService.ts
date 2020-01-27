@@ -9,6 +9,10 @@ class HopeService {
   private constructor() {
     this.api = axios.create({
       baseURL: 'http://10.0.2.2:3000/v1',
+      timeout: 100000,
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
   }
 
@@ -34,12 +38,23 @@ class HopeService {
       role_id: 2,
     });
     const { token } = response.data;
+    /** set token for all requests */
+    this.api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
     return token;
   }
 
-  async signIn(email: string, password: string) {
+  async getFeed(): Promise<any> {
+    const response = await this.api.get(Endpoint.FEED);
+    return response.data;
+  }
+
+  async signIn(email: string, password: string): Promise<string> {
     const response = await this.api.post(Endpoint.SESSION, { email, password });
     const { token } = response.data;
+    /** set token for all requests */
+    this.api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+
     return token;
   }
 

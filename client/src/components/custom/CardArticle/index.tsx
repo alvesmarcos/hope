@@ -15,12 +15,14 @@ const CardArticle: React.FC<CardArticleProps> = ({ imageUri, title }) => {
       borderColor="neutralLight"
       borderWidth="thin"
       borderRadius="strong">
-      <Image
-        source={{
-          uri: imageUri,
-        }}
-        height={200}
-      />
+      {imageUri && (
+        <Image
+          source={{
+            uri: imageUri,
+          }}
+          height={200}
+        />
+      )}
       <Text fontFamily="header" p="medium">
         {title}
       </Text>

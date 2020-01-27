@@ -22,12 +22,14 @@ const CardTestimony: React.FC<CardTestimonyProps> = ({
       borderColor="neutralLight"
       borderWidth="thin"
       borderRadius="strong">
-      <Image
-        source={{
-          uri: imageUri,
-        }}
-        height={150}
-      />
+      {imageUri && (
+        <Image
+          source={{
+            uri: imageUri,
+          }}
+          height={150}
+        />
+      )}
       <Flex p="medium">
         <Text fontFamily="header">{title}</Text>
         <Text fontSize="small" mt="medium">

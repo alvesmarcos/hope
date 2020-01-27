@@ -20,12 +20,14 @@ const CardDocumentary: React.FC<CardDocumentaryProps> = ({
       borderColor="neutralLight"
       borderWidth="thin"
       borderRadius="strong">
-      <Image
-        source={{
-          uri: imageUri,
-        }}
-        height={200}
-      />
+      {imageUri && (
+        <Image
+          source={{
+            uri: imageUri,
+          }}
+          height={200}
+        />
+      )}
       <Flex p="medium">
         <Text fontFamily="header">{title}</Text>
         <Text fontSize="small" mt="medium">

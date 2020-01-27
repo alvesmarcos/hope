@@ -43,12 +43,18 @@ const Layout: React.FC<LayoutProps> = ({
       </Flex>
       <StatusBar variant="secondary" />
       <Flex m="medium">
-        <Text color="neutralDark" fontSize="small" mt="medium">
-          {isLogin ? 'Esqueceu a senha?' : 'Estamos quase lá!'}
-        </Text>
-        {isLogin && (
-          <Text color="neutralDark" fontSize="small" mt="small">
-            Toque no ícone de atualização
+        {isLogin ? (
+          <Text
+            color={error ? 'danger' : 'neutralDark'}
+            fontSize="small"
+            mt="medium">
+            {error
+              ? 'Ops! Não conseguimos autenticar sua conta, tente novamente.'
+              : 'Estamos feliz por ter você de volta'}
+          </Text>
+        ) : (
+          <Text color="neutralDark" fontSize="small" mt="medium">
+            Estamos quase lá!
           </Text>
         )}
         <Text mt="small">
@@ -63,14 +69,17 @@ const Layout: React.FC<LayoutProps> = ({
           p="none"
           secureTextEntry
         />
-        {isLogin ? (
-          <Text
-            color={error ? 'danger' : 'neutralDark'}
-            fontSize="small"
-            mt="medium">
-            {error ? 'Ops! Não conseguimos autenticar sua conta, tente novamente.' : ''}
-          </Text>
-        ) : (
+        {isLogin && (
+          <>
+            <Text color="neutralDark" fontSize="small" mt="small">
+              Esqueceu a senha?
+            </Text>
+            <Text color="neutralDark" fontSize="small" mt="small">
+              Toque no ícone de atualização
+            </Text>
+          </>
+        )}
+        {isLogin ? null : (
           <Text
             color={error ? 'danger' : 'neutralDark'}
             fontSize="small"

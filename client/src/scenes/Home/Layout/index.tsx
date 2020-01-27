@@ -16,50 +16,91 @@ import {
   Header,
   CardDocumentary,
 } from '~/components';
+import { Feed } from '~/store/modules/feed/types';
+import { RefreshControl } from 'react-native';
 
-const Layout: React.FC = () => {
+interface LayoutProps {
+  data: Feed;
+  headerName: string;
+  loading: boolean;
+  onRefresh(): void;
+}
+
+const Layout: React.FC<LayoutProps> = ({
+  data,
+  headerName,
+  loading,
+  onRefresh,
+}) => {
   return (
-    <Scroll p="medium">
-      <Flex justifyContent="space-around">
+    <Scroll
+      p="medium"
+      refreshControl={
+        <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+      }>
+      <Flex>
         <StatusBar variant="secondary" />
-        <Header name="Marcos Henrique" />
-        <CardStatus days={23} hours={35} cash={154} />
-        <CardCuriosity description="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
-        <CardTip
-          title="Dica #1"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        />
-        <CardCheckin />
-        <CardQuote description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" />
-        <CardExpert
-          name="João Paulo de Lima"
-          tip="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
-        />
-        <CardFaq
-          question="Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry?"
-          answer="Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum is simply dummy text of the printing and
-          typesetting industry"
-        />
-        <CardArticle
-          imageUri="https://p2.trrsf.com/image/fget/cf/940/0/images.terra.com/2019/11/25/3190220.jpg"
-          title="A jornada de superação do médico americano que se viciou em opioides"
-        />
-        <CardTestimony
-          imageUri="https://e0.365dm.com/19/12/768x432/skysports-tom-brady-new-england-patriots_4863145.jpg"
-          title="História de Sucesso #27"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry"
-        />
-        <CardDocumentary
-          imageUri="https://i.ytimg.com/vi/KZ2V3_fa6Ys/maxresdefault.jpg"
-          title="Crack - Documentário"
-          description="Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum is simply dummy text of the printing and
-            typesetting industry"
-        />
+        <Header name={headerName} />
+        <Flex mt="large">
+          <CardStatus days={23} hours={35} cash={154} />
+        </Flex>
+        {data.fact && (
+          <Flex mt="medium">
+            <CardCuriosity description={data.fact.text} />
+          </Flex>
+        )}
+        {data.tip && (
+          <Flex mt="medium">
+            <CardTip title={data.tip.title} description={data.tip.text} />
+          </Flex>
+        )}
+        {data.quote && (
+          <Flex mt="medium">
+            <CardQuote description={data.quote.text} />
+          </Flex>
+        )}
+        {data.expert_opinion && (
+          <Flex mt="medium">
+            <CardExpert
+              name={data.expert_opinion.created_by.name}
+              tip={data.expert_opinion.text}
+            />
+          </Flex>
+        )}
+        {data.faq && (
+          <Flex mt="medium">
+            <CardFaq question={data.faq.question} answer={data.faq.answer} />
+          </Flex>
+        )}
+        {data.article && (
+          <Flex mt="medium">
+            <CardArticle
+              imageUri={data.article.thumbnail.url}
+              title="A jornada de superação do médico americano que se viciou em opioides"
+            />
+          </Flex>
+        )}
+        {data.testimony && (
+          <Flex mt="medium">
+            <CardTestimony
+              imageUri={data.testimony.thumbnail.url}
+              title={data.testimony.title}
+              description={data.testimony.text}
+            />
+          </Flex>
+        )}
+        {data.documentary && (
+          <Flex mt="medium">
+            <CardDocumentary
+              imageUri={data.documentary.thumbnail.url}
+              title={data.documentary.title}
+              description={data.documentary.description}
+            />
+          </Flex>
+        )}
+        <Flex mt="medium" mb="xlarge">
+          <CardCheckin />
+        </Flex>
       </Flex>
     </Scroll>
   );

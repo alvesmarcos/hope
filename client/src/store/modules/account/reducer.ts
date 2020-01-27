@@ -1,5 +1,6 @@
 import produce from 'immer';
 import { Reducer } from 'redux';
+import jwtDecode from 'jwt-decode';
 
 import { AccountState, AccountTypes } from './types';
 
@@ -24,6 +25,11 @@ const reducer: Reducer<AccountState> = (state = INITIAL_STATE, action) => {
         draft.error = true;
         break;
       case AccountTypes.LOGIN_SUCCESS:
+        draft.token = action.payload;
+        const decoded = jwtDecode<{ name: string }>(action.payload);
+        draft.data.name = decoded.name;
+        draft.loading = true;
+        draft.error = false;
       case AccountTypes.CREATE_ACCOUNT_SUCCESS:
         draft.token = action.payload;
         draft.loading = true;
@@ -40,6 +46,9 @@ const reducer: Reducer<AccountState> = (state = INITIAL_STATE, action) => {
         break;
       case AccountTypes.SET_PROFILE_ACCOUNT:
         draft.data.profile_id = action.payload;
+        break;
+      case AccountTypes.SET_ERROR:
+        draft.error = action.payload;
         break;
       default:
     }

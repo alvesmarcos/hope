@@ -9,6 +9,7 @@ export enum AccountTypes {
   SET_EMAIL_ACCOUNT = '@account/SET_EMAIL_ACCOUNT',
   SET_PASSWORD_ACCOUNT = '@account/SET_PASSWORD_ACCOUNT',
   SET_PROFILE_ACCOUNT = '@account/SET_PROFILE_ACCOUNT',
+  SET_ERROR = '@account/SET_ERROR',
 }
 
 export interface Account {
@@ -27,5 +28,5 @@ export interface AccountState {
 
 export interface AccountCreators {
   type: AccountTypes;
-  payload?: string | number;
+  payload?: string | number | boolean;
 }

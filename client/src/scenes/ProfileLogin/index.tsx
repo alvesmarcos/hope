@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import navService from '~/services/NavigationService';
-import { setProfile, reqCreateAccount } from '~/store/modules/account/actions';
+import {
+  setProfile,
+  reqCreateAccount,
+  setError,
+} from '~/store/modules/account/actions';
 import {
   getAccountLoading,
   getAccountError,
@@ -17,6 +21,12 @@ const ProfileLogin: React.FC = () => {
   const loading = useSelector(getAccountLoading);
   const error = useSelector(getAccountError);
   const dispatch = useDispatch();
+
+  useEffect(() => refreshError(), []);
+
+  function refreshError() {
+    dispatch(setError(false));
+  }
 
   function selectCard(id: number) {
     data.forEach(item => {

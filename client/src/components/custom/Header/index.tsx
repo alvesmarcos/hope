@@ -1,6 +1,9 @@
 import React from 'react';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 import { Flex, Text, Avatar } from '~/components';
+import { capitalize } from '~/utils';
 import { AccountPlaceholderSrc } from '~/assets';
 
 interface HeaderProps {
@@ -18,7 +21,9 @@ const Header: React.FC<HeaderProps> = ({ name }) => {
           {`Olá, ${name}`}
         </Text>
         <Text color="neutralDark" fontSize="xsmall" mt="smaller">
-          Segura-feira, 04 de Junho
+          {capitalize(
+            format(new Date(), "EEEE',' dd 'de' MMMM", { locale: ptBR }),
+          )}
         </Text>
       </Flex>
       <Flex flex={0.3} flexDirection="row" justifyContent="flex-end">

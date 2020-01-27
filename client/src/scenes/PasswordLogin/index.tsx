@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import validator from 'validator';
 import { NavigationScreenProp, NavigationState } from 'react-navigation';
 
-import { reqLogin, setPassword } from '~/store/modules/account/actions';
+import {
+  reqLogin,
+  setPassword,
+  setError as setReducerError,
+} from '~/store/modules/account/actions';
 import navService from '~/services/NavigationService';
 import LayoutPasswordLogin from './Layout';
 import {
@@ -33,6 +37,12 @@ const PasswordLogin: React.FC<PasswordLogin> = ({ navigation }) => {
   const dispatch = useDispatch();
   const errorReducer = useSelector(getAccountError);
   const loading = useSelector(getAccountLoading);
+
+  useEffect(() => refreshError(), []);
+
+  function refreshError() {
+    dispatch(setReducerError(false));
+  }
 
   function onChangeText(text: string) {
     setInputText(text);

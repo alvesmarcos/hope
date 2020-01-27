@@ -58,7 +58,11 @@ const Routes = (userLogged = false) =>
                     break;
                 }
                 return (
-                  <Icon name={iconName} fontSize="large" color={focused ? 'primary': 'neutralDark'} />
+                  <Icon
+                    name={iconName}
+                    fontSize="large"
+                    color={focused ? 'primary' : 'neutralDark'}
+                  />
                 );
               },
             }),
@@ -69,13 +73,13 @@ const Routes = (userLogged = false) =>
                 borderTopWidth: 1,
                 borderTopColor: colors.neutralLight,
               },
-              showIcon: true, 
+              showIcon: true,
             },
           },
         ),
       },
       {
-        initialRouteName: !userLogged ? 'Login' : 'Home',
+        initialRouteName: userLogged ? 'Home' : 'Login',
       },
     ),
   );
