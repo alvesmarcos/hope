@@ -14,7 +14,7 @@ export default {
     borderColor: colors.primaryLight,
   },
   light: {
-    backgroundColor: colors.transparent,
+    backgroundColor: colors.paper,
     borderColor: colors.neutralLight,
   },
   none: {

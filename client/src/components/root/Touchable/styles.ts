@@ -13,10 +13,12 @@ import {
   paddingLeft,
   paddingRight,
   paddingTop,
+  layout,
 } from 'styled-system';
 import { TouchableStyleProps } from '~/components/root/types';
 
 export const Button = styled.TouchableOpacity<TouchableStyleProps>`
+  ${layout};
   ${flexbox};
   ${border};
   ${buttonStyle};

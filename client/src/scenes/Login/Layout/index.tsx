@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, Icon, StatusBar, Flex, Container } from '~/components';
+import { openLink } from '~/utils';
 
 interface LayoutProps {
   onPressCreateAccount(): void;

@@ -102,7 +102,8 @@ export interface TouchableStyleProps
   extends ButtonStyleProps,
     BorderProps,
     SpaceProps,
-    FlexboxProps {}
+    FlexboxProps,
+    LayoutProps {}
 
 export interface TouchableElementProps
   extends TouchableStyleProps,

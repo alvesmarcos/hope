@@ -25,6 +25,7 @@
     "react-native": "0.61.5",
     "react-native-action-button": "^2.8.5",
     "react-native-gesture-handler": "^1.5.3",
+    "react-native-inappbrowser-reborn": "^3.3.4",
     "react-native-paper": "^3.5.0",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.6.2",

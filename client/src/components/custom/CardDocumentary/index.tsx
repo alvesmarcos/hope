@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Flex, Text, Image } from '~/components';
+import { Flex, Text, Image, Touchable, LoadingIndicator } from '~/components';
+import { openLink } from '~/utils';
 
 interface CardDocumentaryProps {
   imageUri: string;
   title: string;
   description: string;
+  url: string;
 }
 
 const CardDocumentary: React.FC<CardDocumentaryProps> = ({
   imageUri,
   title,
   description,
+  url,
 }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  function loadFalse() {
+    setLoading(false);
+  }
+
+  async function openContent() {
+    setLoading(true);
+    await openLink(url, loadFalse);
+    setLoading(false);
+  }
+
   return (
-    <Flex
+    <Touchable
       overflow="hidden"
-      backgroundColor="paper"
-      borderColor="neutralLight"
+      variant="light"
       borderWidth="thin"
-      borderRadius="strong">
+      borderRadius="strong"
+      onPress={openContent}>
       {imageUri && (
         <Image
           source={{
@@ -33,8 +48,13 @@ const CardDocumentary: React.FC<CardDocumentaryProps> = ({
         <Text fontSize="small" mt="medium">
           {description}
         </Text>
+        {loading && (
+          <Flex flex={0.1} mt="medium">
+            <LoadingIndicator variant="primary" size="large" />
+          </Flex>
+        )}
       </Flex>
-    </Flex>
+    </Touchable>
   );
 };
 

@@ -64,6 +64,7 @@ const Layout: React.FC<LayoutProps> = ({
             <CardExpert
               name={data.expert_opinion.created_by.name}
               tip={data.expert_opinion.text}
+              imageURI={data.expert_opinion.created_by.avatar.url}
             />
           </Flex>
         )}
@@ -77,6 +78,7 @@ const Layout: React.FC<LayoutProps> = ({
             <CardArticle
               imageUri={data.article.thumbnail.url}
               title="A jornada de superação do médico americano que se viciou em opioides"
+              url={data.article.url}
             />
           </Flex>
         )}
@@ -86,6 +88,7 @@ const Layout: React.FC<LayoutProps> = ({
               imageUri={data.testimony.thumbnail.url}
               title={data.testimony.title}
               description={data.testimony.text}
+              url={data.testimony.url}
             />
           </Flex>
         )}
@@ -95,6 +98,7 @@ const Layout: React.FC<LayoutProps> = ({
               imageUri={data.documentary.thumbnail.url}
               title={data.documentary.title}
               description={data.documentary.description}
+              url={data.documentary.url}
             />
           </Flex>
         )}

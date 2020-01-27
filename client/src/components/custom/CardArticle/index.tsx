@@ -1,20 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Flex, Text, Image } from '~/components';
+import { Touchable, Text, Image, LoadingIndicator, Flex } from '~/components';
+import { openLink } from '~/utils';
 
 interface CardArticleProps {
   imageUri: string;
   title: string;
+  url: string;
 }
 
-const CardArticle: React.FC<CardArticleProps> = ({ imageUri, title }) => {
+const CardArticle: React.FC<CardArticleProps> = ({ imageUri, title, url }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  function loadFalse() {
+    setLoading(false);
+  }
+
+  async function openContent() {
+    setLoading(true);
+    await openLink(url, loadFalse);
+    setLoading(false);
+  }
+
   return (
-    <Flex
+    <Touchable
       overflow="hidden"
-      backgroundColor="paper"
-      borderColor="neutralLight"
+      variant="light"
       borderWidth="thin"
-      borderRadius="strong">
+      borderRadius="strong"
+      onPress={openContent}>
       {imageUri && (
         <Image
           source={{
@@ -26,7 +40,12 @@ const CardArticle: React.FC<CardArticleProps> = ({ imageUri, title }) => {
       <Text fontFamily="header" p="medium">
         {title}
       </Text>
-    </Flex>
+      {loading && (
+        <Flex flex={0.1} mt="medium">
+          <LoadingIndicator variant="primary" size="large" />
+        </Flex>
+      )}
+    </Touchable>
   );
 };
 

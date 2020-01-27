@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Flex, Text, Button, Image } from '~/components';
+import { Flex, Text, Button, Image, LoadingIndicator } from '~/components';
+import { openLink } from '~/utils';
 
 interface CardTestimonyProps {
   imageUri: string;
   title: string;
   description: string;
-  onPress?(): void;
+  url: string;
 }
 
 const CardTestimony: React.FC<CardTestimonyProps> = ({
   imageUri,
   title,
   description,
-  onPress,
+  url,
 }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+
+  function loadFalse() {
+    setLoading(false);
+  }
+
+  async function openContent() {
+    setLoading(true);
+    await openLink(url, loadFalse);
+    setLoading(false);
+  }
+
   return (
     <Flex
       overflow="hidden"
@@ -35,9 +48,19 @@ const CardTestimony: React.FC<CardTestimonyProps> = ({
         <Text fontSize="small" mt="medium">
           {description}
         </Text>
-        <Button variant="primary" p="xsmall" mt="medium" onPress={onPress}>
-          Ver história completa
-        </Button>
+        {loading ? (
+          <Flex flex={0.1} mt="medium">
+            <LoadingIndicator variant="primary" size="large" />
+          </Flex>
+        ) : (
+          <Button
+            variant="primary"
+            p="xsmall"
+            mt="medium"
+            onPress={openContent}>
+            Ver história completa
+          </Button>
+        )}
       </Flex>
     </Flex>
   );
