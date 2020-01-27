@@ -40,6 +40,6 @@ export function setProfile(profile: number): AccountCreators {
   return { type: AccountTypes.SET_PROFILE_ACCOUNT, payload: profile };
 }
 
-export function setError(error: boolean): AccountCreators {
-  return { type: AccountTypes.SET_ERROR, payload: error };
+export function resetLoadingError(): AccountCreators {
+  return { type: AccountTypes.RESET_LOADING_ERROR };
 }

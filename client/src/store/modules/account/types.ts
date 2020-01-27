@@ -9,7 +9,7 @@ export enum AccountTypes {
   SET_EMAIL_ACCOUNT = '@account/SET_EMAIL_ACCOUNT',
   SET_PASSWORD_ACCOUNT = '@account/SET_PASSWORD_ACCOUNT',
   SET_PROFILE_ACCOUNT = '@account/SET_PROFILE_ACCOUNT',
-  SET_ERROR = '@account/SET_ERROR',
+  RESET_LOADING_ERROR = '@account/RESET_LOADING_ERROR',
 }
 
 export interface Account {

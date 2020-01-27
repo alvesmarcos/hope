@@ -47,8 +47,9 @@ const reducer: Reducer<AccountState> = (state = INITIAL_STATE, action) => {
       case AccountTypes.SET_PROFILE_ACCOUNT:
         draft.data.profile_id = action.payload;
         break;
-      case AccountTypes.SET_ERROR:
-        draft.error = action.payload;
+      case AccountTypes.RESET_LOADING_ERROR:
+        draft.error = false;
+        draft.loading = false;
         break;
       default:
     }

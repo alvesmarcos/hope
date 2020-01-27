@@ -5,7 +5,7 @@ import navService from '~/services/NavigationService';
 import {
   setProfile,
   reqCreateAccount,
-  setError,
+  resetLoadingError,
 } from '~/store/modules/account/actions';
 import {
   getAccountLoading,
@@ -25,7 +25,7 @@ const ProfileLogin: React.FC = () => {
   useEffect(() => refreshError(), []);
 
   function refreshError() {
-    dispatch(setError(false));
+    dispatch(resetLoadingError());
   }
 
   function selectCard(id: number) {

@@ -6,7 +6,7 @@ import { NavigationScreenProp, NavigationState } from 'react-navigation';
 import {
   reqLogin,
   setPassword,
-  setError as setReducerError,
+  resetLoadingError,
 } from '~/store/modules/account/actions';
 import navService from '~/services/NavigationService';
 import LayoutPasswordLogin from './Layout';
@@ -41,7 +41,7 @@ const PasswordLogin: React.FC<PasswordLogin> = ({ navigation }) => {
   useEffect(() => refreshError(), []);
 
   function refreshError() {
-    dispatch(setReducerError(false));
+    dispatch(resetLoadingError());
   }
 
   function onChangeText(text: string) {
