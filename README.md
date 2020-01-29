@@ -10,9 +10,7 @@ Hackathon Fuze.cc and NPE/LAViD
 
 # Screencast
 
-<div align="center">
   <a href="https://www.youtube.com/watch?v=DMC5d25WX6o"><img src="https://img.youtube.com/vi/DMC5d25WX6o/0.jpg" alt="Hope" target=”_blank”></a>
-</div>
 
 # Screenshots
 
