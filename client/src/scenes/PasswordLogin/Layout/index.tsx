@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   IconButton,
   Flex,
@@ -8,38 +9,47 @@ import {
   Text,
   Input,
   LoadingIndicator,
+  Spinner,
 } from '~/components';
+import colors from '~/styles/colors';
 
 interface LayoutProps {
   isLogin: boolean;
   loading: boolean;
+  spinner: boolean;
   text: string;
   helpText: string;
   error: boolean;
   onPressBack(): void;
   onPressNext(): void;
   onChangeText(text): void;
+  onPressRecoveryPassword(): void;
 }
 
 const Layout: React.FC<LayoutProps> = ({
   isLogin,
   loading,
+  spinner,
   text,
   helpText,
   error,
   onPressBack,
   onPressNext,
   onChangeText,
+  onPressRecoveryPassword,
 }) => {
   return (
     <Container p="medium">
+      <Spinner visible={spinner} text="Enviando..." variant="secondary" />
       <Flex
         flex={0.1}
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center">
         <IconButton name="arrow-left" onPress={onPressBack} />
-        <IconButton name="refresh-ccw" onPress={onPressBack} />
+        {isLogin && (
+          <IconButton name="refresh-ccw" onPress={onPressRecoveryPassword} />
+        )}
       </Flex>
       <StatusBar variant="secondary" />
       <Flex m="medium">

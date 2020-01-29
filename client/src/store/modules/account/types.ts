@@ -9,6 +9,7 @@ export enum AccountTypes {
   SET_EMAIL_ACCOUNT = '@account/SET_EMAIL_ACCOUNT',
   SET_PASSWORD_ACCOUNT = '@account/SET_PASSWORD_ACCOUNT',
   SET_PROFILE_ACCOUNT = '@account/SET_PROFILE_ACCOUNT',
+  SET_RECOVERY_TOKEN_ACCOUNT = '@account/SET_RECOVERY_TOKEN_ACCOUNT',
   RESET_LOADING_ERROR = '@account/RESET_LOADING_ERROR',
 }
 
@@ -17,6 +18,7 @@ export interface Account {
   readonly email: string;
   readonly password: string;
   readonly profile_id: number;
+  readonly recovery_token: string;
 }
 
 export interface AccountState {

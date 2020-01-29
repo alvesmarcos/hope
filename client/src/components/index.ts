@@ -25,6 +25,7 @@ import CardArticle from './custom/CardArticle';
 import CardTestimony from './custom/CardTestimony';
 import CardDocumentary from './custom/CardDocumentary';
 import Header from './custom/Header';
+import Spinner from './custom/Spinner';
 
 export {
   Container,
@@ -53,4 +54,5 @@ export {
   Image,
   Header,
   LoadingIndicator,
+  Spinner,
 };

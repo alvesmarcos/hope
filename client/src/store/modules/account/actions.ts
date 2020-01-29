@@ -40,6 +40,10 @@ export function setProfile(profile: number): AccountCreators {
   return { type: AccountTypes.SET_PROFILE_ACCOUNT, payload: profile };
 }
 
+export function setRecoveryToken(token: string): AccountCreators {
+  return { type: AccountTypes.SET_RECOVERY_TOKEN_ACCOUNT, payload: token };
+}
+
 export function resetLoadingError(): AccountCreators {
   return { type: AccountTypes.RESET_LOADING_ERROR };
 }

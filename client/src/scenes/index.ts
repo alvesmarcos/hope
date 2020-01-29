@@ -7,6 +7,8 @@ import ProfileLogin from './ProfileLogin';
 import Home from './Home';
 import Community from './Community';
 import Message from './Message';
+import RecoveryPassword from './RecoveryPassword';
+import ResetPassword from './ResetPassword';
 
 export {
   EmailLogin,
@@ -18,4 +20,6 @@ export {
   Home,
   Community,
   Message,
+  RecoveryPassword,
+  ResetPassword,
 };

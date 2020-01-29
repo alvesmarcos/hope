@@ -5,7 +5,13 @@ import jwtDecode from 'jwt-decode';
 import { AccountState, AccountTypes } from './types';
 
 const INITIAL_STATE: AccountState = {
-  data: { name: '', email: '', password: '', profile_id: 0 },
+  data: {
+    name: '',
+    email: '',
+    password: '',
+    profile_id: 0,
+    recovery_token: '',
+  },
   token: '',
   error: false,
   loading: false,
@@ -46,6 +52,9 @@ const reducer: Reducer<AccountState> = (state = INITIAL_STATE, action) => {
         break;
       case AccountTypes.SET_PROFILE_ACCOUNT:
         draft.data.profile_id = action.payload;
+        break;
+      case AccountTypes.SET_RECOVERY_TOKEN_ACCOUNT:
+        draft.data.recovery_token = action.payload;
         break;
       case AccountTypes.RESET_LOADING_ERROR:
         draft.error = false;

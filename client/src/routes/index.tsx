@@ -13,6 +13,8 @@ import {
   Community,
   Home,
   Message,
+  RecoveryPassword,
+  ResetPassword,
 } from '~/scenes';
 import { Icon } from '~/components';
 import colors from '~/styles/colors';
@@ -28,6 +30,8 @@ const Routes = (userLogged = false) =>
             NameLogin,
             PasswordLogin,
             ProfileLogin,
+            RecoveryPassword,
+            ResetPassword,
             Intro,
           },
           {

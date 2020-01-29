@@ -8,4 +8,8 @@ function pxModerateScaled(value: number, factor = 1): string {
   return `${moderateScale(value, factor)}px`;
 }
 
-export { pxScaled, pxModerateScaled };
+function unwrapperpx(value: string): number {
+  return Number(value.split('p')[0]);
+}
+
+export { pxScaled, pxModerateScaled, unwrapperpx };

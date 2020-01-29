@@ -1,4 +1,5 @@
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
+import uuid from 'uuid/v4';
 
 class NavigationService {
   private navigator: any;
@@ -17,13 +18,17 @@ class NavigationService {
     this.navigator.dispatch(NavigationActions.back());
   }
 
-  push(routeName: string, params = {}) {
-    this.navigator.dispatch(
-      NavigationActions.navigate({
-        routeName,
-        params,
-      }),
-    );
+  push(routeName: string, params = {}, reset = false) {
+    const action = NavigationActions.navigate({
+      routeName,
+      params,
+      key: uuid(),
+    });
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [action],
+    });
+    this.navigator.dispatch(reset ? resetAction : action);
   }
 
   setRefNavigator(navigator: any) {

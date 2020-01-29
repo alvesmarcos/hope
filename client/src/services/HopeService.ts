@@ -49,6 +49,19 @@ class HopeService {
     return response.data;
   }
 
+  async forgotPasswordSendToken(email: string) {
+    await this.api.post(Endpoint.FORGOT_PASSWORD, { email });
+  }
+
+  async resetPassword(email: string, password: string, token: string) {
+    await this.api.post(Endpoint.RESET_PASSWORD, {
+      email,
+      password,
+      password_confirmation: password,
+      token,
+    });
+  }
+
   async signIn(email: string, password: string): Promise<string> {
     const response = await this.api.post(Endpoint.SESSION, { email, password });
     const { token } = response.data;
