@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_02_013443) do
+ActiveRecord::Schema.define(version: 2020_01_25_171538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 2020_01_02_013443) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "username", null: false
     t.string "password_digest", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -124,7 +123,12 @@ ActiveRecord::Schema.define(version: 2020_01_02_013443) do
     t.index ["email"], name: "index_users_on_email"
     t.index ["profile_id"], name: "index_users_on_profile_id"
     t.index ["role_id"], name: "index_users_on_role_id"
-    t.index ["username"], name: "index_users_on_username"
+  end
+
+  create_table "verify_emails", force: :cascade do |t|
+    t.string "email", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "articles", "users", column: "created_by_id"

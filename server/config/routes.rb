@@ -14,7 +14,23 @@ Rails.application.routes.draw do
     put 'avatars/update.json', to: 'avatars#update'
     # DELETE
     delete 'avatars/destroy.json', to: 'avatars#destroy'
+
+    # RolesController
+    # GET
+    get 'roles/list.json', to: 'roles#index'
+
+    # ProfilesController
+    # GET
+    get 'profiles/list.json', to: 'profiles#index'
     
+    # VerifyEmailController
+    get 'verify_emails/list.json', to: 'verify_emails#index'
+    post 'verify_emails/create.json', to: 'verify_emails#create'
+
+    # FeedController
+    # GET
+    get 'feeds/list.json', to: 'feeds#index'
+
     # UsersController
     # GET
     get 'users/list.json', to: 'users#index'

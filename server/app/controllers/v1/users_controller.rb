@@ -82,7 +82,6 @@ module V1
       params.permit(
       :name,
       :email,
-      :username,
       :profile_id,
       :role_id,
       :password,

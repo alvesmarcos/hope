@@ -1,4 +1,12 @@
 class Message
+  def self.available_email(email = 'example@mail.com')
+    "The e-mail #{email} appears to be available in our platform"
+  end
+  
+  def self.unavailable_email(email = 'example@mail.com')
+    "The e-mail #{email} appears to be unavailable in our platform"
+  end
+
   def self.not_found(record = 'record')
     "Sorry, #{record} not found"
   end
