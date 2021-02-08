@@ -17,7 +17,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt'
 gem "fog-aws"
 # Use Active Storage variant
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 # mailgun
 gem 'mailgun-ruby', '~>1.1.6'
 # Reduces boot times through caching; required in config/boot.rb
