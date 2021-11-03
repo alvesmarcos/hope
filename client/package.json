@@ -49,7 +49,7 @@
     "styled-system": "^5.1.4",
     "styled-theming": "^2.2.0",
     "uuid": "^3.4.0",
-    "validator": "^12.1.0",
+    "validator": "^13.7.0",
     "yup": "^0.28.0"
   },
   "devDependencies": {
